@@ -1,0 +1,149 @@
+{ config, pkgs, lib, ... }:
+let
+        SSID = "ENTER_SSID";
+        SSIDpassword = "ENTER_PASSWORD";
+        interface = "wlan0";
+        wg_interface = "end0";
+        hostname = "netflix-huijaus";
+        ssh-authorizedKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBbGREoK1uVny1s8FK3KZ74Wmaf0VtifhqPyK69C/Gez vili@helium";
+		  ddPassFile = "/root/wg-conf/ddPassFile";
+in {
+
+environment.systemPackages = with pkgs; [ vim wireguard-tools qrencode ];
+
+  # enable NAT
+  networking.nat.enable = true;
+  networking.nat.externalInterface = wg_interface;
+  networking.nat.internalInterfaces = [ "wg0" ];
+  networking.firewall = {
+    allowedUDPPorts = [ 51821 ];
+  };
+
+  networking.wireguard.interfaces = {
+    # "wg0" is the network interface name. You can name the interface arbitrarily.
+    wg0 = {
+      # Determines the IP address and subnet of the server's end of the tunnel interface.
+      ips = [ "10.100.0.1/24" ];
+
+      # The port that WireGuard listens to. Must be accessible by the client.
+      listenPort = 51821;
+
+      # This allows the wireguard server to route your traffic to the internet and hence be like a VPN
+      # For this to work you have to set the dnsserver IP of your router (or dnsserver of choice) in your clients
+      postSetup = ''
+${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o ${wg_interface} -j MASQUERADE
+      '';
+
+		# This undoes the above command
+		postShutdown = ''
+${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o ${wg_interface} -j MASQUERADE
+      '';
+		
+
+      # Path to the private key file.
+      #
+      # Note: The private key can also be included inline via the privateKey option,
+      # but this makes the private key world-readable; thus, using privateKeyFile is
+      # recommended.
+      privateKeyFile = "/root/wg-conf/private";
+
+      peers = [
+        { # Vili Android
+          publicKey = "niKpC3+Pi4HrYITlzROzqRcxzfzRw1rjpxeJVOr/WAw=";
+          allowedIPs = [ "10.100.0.2/32" ];
+        }
+        { # Miika Puhelin
+          publicKey = "mcOs94W9jqn3SGgc8uWbnmUv0tja/P6tAvaCg3WYKlY=";
+          allowedIPs = [ "10.100.0.3/32" ];
+        }
+        { # Miika Kone
+          publicKey = "7m7wnwNlmxZfUNvUOYNh4mTNbOsig7z2K/svUhDHFDY=";
+          allowedIPs = [ "10.100.0.4/32" ];
+        }
+        { # Silja Puhelin
+          publicKey = "f6wWd6KD63xwnKkre/ZgZxPJv9GfAXK9Zx/EQEq8cik=";
+          allowedIPs = [ "10.100.0.5/32" ];
+        }
+        { # Silja Kone
+          publicKey = "t9cmHc6/+0njdzsTFnnhEGKfhCa2VXFrTH9hF1jOCXw=";
+          allowedIPs = [ "10.100.0.6/32" ];
+        }
+        { # Vili helium
+          publicKey = "iGO375NT9EK5LH+E9vjPRRJp+UM4rZ2d1RMVR3f5R0c=";
+          allowedIPs = [ "10.100.0.7/32" ];
+        }
+      ];
+    };
+  };
+
+services.ddclient = {
+	enable = true;
+	domains = [ "netflood.ddnsfree.com" ];
+	use = "web, web=checkip.dynu.com/, web-skip='IP Address'";
+	server = "api.dynu.com";
+	username = "VSinerva";
+	passwordFile = ddPassFile;
+};
+#################### EVERYTHING BELOW THIS SHOULD NOT NEED TO CHANGE ####################
+
+        boot = {
+                kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
+                initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
+                loader = {
+                        grub.enable = false;
+                        generic-extlinux-compatible.enable = true;
+                };
+        };
+
+        fileSystems = {
+                "/" = {
+                        device = "/dev/disk/by-label/NIXOS_SD";
+                        fsType = "ext4";
+                        options = [ "noatime" ];
+                };
+        };
+
+        networking = {
+                hostName = hostname;
+                wireless = {
+                        enable = false;
+                        networks."${SSID}".psk = SSIDpassword;
+                        interfaces = [ interface ];
+                };
+        };
+
+#################### SSH configuration ####################
+        services.openssh.enable = true;
+        services.openssh.settings.PasswordAuthentication = false;
+        users.users.root.openssh.authorizedKeys.keys = [ ssh-authorizedKey ];
+
+#################### BASE ####################
+        users.mutableUsers = false;
+        users.users.root.hashedPassword = "!";
+
+        nixpkgs.config.allowUnfree = true;
+
+# Select internationalisation properties.
+        i18n.defaultLocale = "en_US.UTF-8";
+        services.xserver.layout = "us,";
+        services.xserver.xkbVariant = "de_se_fi,";
+        console = pkgs.lib.mkForce {
+                font = "Lat2-Terminus16";
+                useXkbConfig = true; # use xkbOptions in tty.
+        };
+        time.timeZone = "Europe/Helsinki";
+
+#################### Housekeeping ####################
+        system.autoUpgrade.enable = true;
+        nix.gc.automatic = true;
+        nix.gc.options = "--delete-older-than 7d";
+        nix.gc.dates = "weekly";
+
+# Copy the NixOS configuration file and link it from the resulting system
+# (/run/current-system/configuration.nix). This is useful in case you
+# accidentally delete configuration.nix.
+        system.copySystemConfiguration = true;
+
+        hardware.enableRedistributableFirmware = true;
+        system.stateVersion = "23.11";
+}
