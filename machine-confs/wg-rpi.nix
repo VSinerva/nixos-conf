@@ -11,7 +11,7 @@ in {
 		../base.nix
 	];
 
-	environment.systemPackages = with pkgs; [ vim wireguard-tools qrencode ];
+	environment.systemPackages = with pkgs; [ git wireguard-tools qrencode ];
 
   # enable NAT
   networking.nat.enable = true;
