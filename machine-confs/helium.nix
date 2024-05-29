@@ -144,12 +144,6 @@ in
 				accelProfile = "custom";
 				accelPointsMotion = [ 0.00000 0.02000 0.04000 0.06000 0.08000 0.10000 0.12000 0.14000 0.16000 0.18000 0.20000 0.25250 0.31000 0.37250 0.44000 0.51250 0.59000 0.67250 0.76000 0.85250 0.95000 1.15500 1.37000 1.59500 1.83000 2.07500 2.33000 2.59500 2.87000 3.15500 3.45000 3.75500 4.07000 4.39500 4.73000 5.07500 5.43000 5.79500 6.17000 6.55500 6.95000 7.35500 7.77000 8.19500 8.63000 9.07500 9.53000 9.99500 10.47000 10.95500 11.45000 11.95000 ];
 				accelStepMotion = 0.05;
-#				accelPointsFallback = [ 0.0 10 ];
-#				accelPointsMotion = [ 0.0 20 ];
-#				accelPointsScroll = [ 0.0 30 ];
-#				accelStepFallback = 0.01;
-#				accelStepMotion = 0.02;
-#				accelStepScroll = 0.03;
 			};
 
 			redshift = {
@@ -173,6 +167,21 @@ in
 			latitude = 60.17;
 			longitude = 24.94;
 		};
+
+# Swap + hibernate
+	swapDevices = [
+		{
+			device = "/var/lib/swapfile";
+			size = 16*1024;
+		}
+	];
+	boot.resumeDevice = "/dev/mapper/luks-f6e1979b-0dee-4ee9-8170-10490019854b";
+	boot.kernelParams = [ "resume_offset=44537856" ];
+	services.logind = {
+		lidSwitch = "hibernate";
+		powerKey = "hibernate";
+		powerKeyLongPress = "poweroff";
+	};
 
 # Keychron Q11
 		services.udev.extraRules = ''
