@@ -69,11 +69,11 @@ in
 	};
 
 	imports = [
-		/mnt/nixos-conf/base.nix
-			/mnt/nixos-conf/vili.nix
-			/mnt/nixos-conf/desktop.nix
-			/mnt/nixos-conf/development.nix
-			/mnt/nixos-conf/machine-confs/libinput.nix
+			../base.nix
+			../vili.nix
+			../desktop.nix
+			../development.nix
+			./libinput.nix
 	];
 	disabledModules = [ "services/x11/hardware/libinput.nix" ];
 
