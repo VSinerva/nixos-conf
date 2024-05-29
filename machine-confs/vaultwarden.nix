@@ -3,8 +3,8 @@
 	networking.hostName = "vaultwarden";
 
 	imports = [
-		/mnt/nixos-conf/base.nix
-			/mnt/nixos-conf/vaultwarden.nix
+		../base.nix
+		../vaultwarden.nix
 	];
 
 # HARDWARE SPECIFIC

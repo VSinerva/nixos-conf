@@ -3,9 +3,9 @@
 	networking.hostName = "nixos-cpu";
 
 	imports = [
-		/mnt/nixos-conf/base.nix
-			/mnt/nixos-conf/development.nix
-			/mnt/nixos-conf/vili.nix
+		../base.nix
+		../development.nix
+		../vili.nix
 	];
 
 # HARDWARE SPECIFIC
