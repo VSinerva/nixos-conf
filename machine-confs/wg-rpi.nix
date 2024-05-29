@@ -8,8 +8,11 @@ let
         ssh-authorizedKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBbGREoK1uVny1s8FK3KZ74Wmaf0VtifhqPyK69C/Gez vili@helium";
 		  ddPassFile = "/root/wg-conf/ddPassFile";
 in {
+	imports = [
+		../base.nix
+	];
 
-environment.systemPackages = with pkgs; [ vim wireguard-tools qrencode ];
+	environment.systemPackages = with pkgs; [ vim wireguard-tools qrencode ];
 
   # enable NAT
   networking.nat.enable = true;
@@ -145,5 +148,4 @@ services.ddclient = {
         system.copySystemConfiguration = true;
 
         hardware.enableRedistributableFirmware = true;
-        system.stateVersion = "23.11";
 }
