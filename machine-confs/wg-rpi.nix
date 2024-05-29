@@ -5,7 +5,6 @@ let
         interface = "wlan0";
         wg_interface = "end0";
         hostname = "netflix-huijaus";
-        ssh-authorizedKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBbGREoK1uVny1s8FK3KZ74Wmaf0VtifhqPyK69C/Gez vili@helium";
 		  ddPassFile = "/root/wg-conf/ddPassFile";
 in {
 	imports = [
@@ -114,38 +113,4 @@ services.ddclient = {
                         interfaces = [ interface ];
                 };
         };
-
-#################### SSH configuration ####################
-        services.openssh.enable = true;
-        services.openssh.settings.PasswordAuthentication = false;
-        users.users.root.openssh.authorizedKeys.keys = [ ssh-authorizedKey ];
-
-#################### BASE ####################
-        users.mutableUsers = false;
-        users.users.root.hashedPassword = "!";
-
-        nixpkgs.config.allowUnfree = true;
-
-# Select internationalisation properties.
-        i18n.defaultLocale = "en_US.UTF-8";
-        services.xserver.layout = "us,";
-        services.xserver.xkbVariant = "de_se_fi,";
-        console = pkgs.lib.mkForce {
-                font = "Lat2-Terminus16";
-                useXkbConfig = true; # use xkbOptions in tty.
-        };
-        time.timeZone = "Europe/Helsinki";
-
-#################### Housekeeping ####################
-        system.autoUpgrade.enable = true;
-        nix.gc.automatic = true;
-        nix.gc.options = "--delete-older-than 7d";
-        nix.gc.dates = "weekly";
-
-# Copy the NixOS configuration file and link it from the resulting system
-# (/run/current-system/configuration.nix). This is useful in case you
-# accidentally delete configuration.nix.
-        system.copySystemConfiguration = true;
-
-        hardware.enableRedistributableFirmware = true;
 }
