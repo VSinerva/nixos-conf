@@ -179,8 +179,6 @@ in
 	boot.kernelParams = [ "resume_offset=44537856" ];
 	services.logind = {
 		lidSwitch = "hibernate";
-		powerKey = "hibernate";
-		powerKeyLongPress = "poweroff";
 	};
 
 # Keychron Q11
