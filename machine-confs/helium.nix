@@ -73,7 +73,7 @@ in
 			../vili.nix
 			../desktop.nix
 			../development.nix
-			./libinput.nix
+			../misc/libinput.nix
 	];
 	disabledModules = [ "services/x11/hardware/libinput.nix" ];
 
@@ -82,7 +82,7 @@ in
 		(final: prev:
 		 {
 		 moonlight-qt = prev.moonlight-qt.overrideAttrs (old: {
-				 patches = (old.patches or []) ++ [ ./mouse-accel.patch ];
+				 patches = (old.patches or []) ++ [ ../misc/mouse-accel.patch ];
 				 });
 		 })
 		];
