@@ -75,7 +75,7 @@ in
 			../development.nix
 			../misc/libinput.nix
 	];
-	disabledModules = [ "services/x11/hardware/libinput.nix" ];
+	disabledModules = [ "services/hardware/libinput.nix" ];
 
 	nixpkgs.overlays = 
 		[

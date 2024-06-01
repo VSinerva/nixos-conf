@@ -95,8 +95,10 @@
 
 # Select internationalisation properties.
 		i18n.defaultLocale = "en_US.UTF-8";
-	services.xserver.layout = "us,";
-	services.xserver.xkbVariant = "de_se_fi,";
+	services.xserver.xkb = { 
+		layout = "us,";
+		variant = "de_se_fi,";
+	};
 	console = pkgs.lib.mkForce {
 		font = "Lat2-Terminus16";
 		useXkbConfig = true; # use xkbOptions in tty.

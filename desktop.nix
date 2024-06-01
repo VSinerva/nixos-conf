@@ -486,13 +486,15 @@ in
 	];
 
 	services = {
+		displayManager = {
+			defaultSession = "none+i3";
+			autoLogin.enable = true;
+			autoLogin.user = "vili";
+		};
 		xserver = {
 			enable = true;
 			displayManager = {
-				defaultSession = "none+i3";
 				lightdm.enable = true;
-				autoLogin.enable = true;
-				autoLogin.user = "vili";
 				sessionCommands = ''${pkgs.xorg.xrdb}/bin/xrdb -merge < ${Xresources}'';
 			};
 			windowManager.i3 = {
@@ -504,7 +506,7 @@ in
 		printing.enable = true;
 		avahi = {
 			enable = true;
-			nssmdns = true;
+			nssmdns4 = true;
 			openFirewall = true;
 		};
 	};
