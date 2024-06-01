@@ -12,8 +12,10 @@
 		https = true;
 		maxUploadSize = "10G";
 		config = {
-			overwriteProtocol = "https";
 			adminpassFile = "/var/lib/nextcloud/adminpass";
+		};
+		settings = {
+			overwriteprotocol = "https";
 		};
 	};
 
