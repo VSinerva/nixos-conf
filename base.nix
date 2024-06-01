@@ -112,7 +112,10 @@
 	};
 
 	nix = {
-		settings.auto-optimise-store = true;
+		settings = {
+			auto-optimise-store = true;
+			tarball-ttl = 0;
+		};
 		gc = {
 			automatic = true;
 			options = "--delete-older-than 7d";
