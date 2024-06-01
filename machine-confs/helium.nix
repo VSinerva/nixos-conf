@@ -1,30 +1,4 @@
 { config, pkgs, lib, ... }:
-let 
-unison-conf = "${pkgs.writeText "unison-conf"
-''
-root = /home/vili
-root = ssh://nixos-cpu.vsinerva.fi//home/vili
-
-watch = true
-repeat = watch
-prefer = newer
-diff = diff -y -W 79 --suppress-common-lines
-copyprog = rsync --inplace --compress
-copyprogrest = rsync --partial --inplace --compress sshargs = -C
-
-path = Desktop
-path = Documents
-path = Downloads
-path = Music
-path = Pictures
-path = Projects
-path = Public
-path = School
-path = Templates
-path = Videos
-path = Zotero
-''}";
-in
 {
 	networking = {
 		hostName = "helium";
@@ -71,6 +45,7 @@ in
 	imports = [
 			../base.nix
 			../vili.nix
+			../syncthing.nix
 			../desktop.nix
 			../development.nix
 			../misc/libinput.nix
@@ -90,30 +65,6 @@ in
 		environment.systemPackages = with pkgs; [
 			zenmonitor moonlight-qt parsec-bin via
 		];
-
-		systemd.services = {
-			unisonConfSymlink = {
-				wantedBy = [ "multi-user.target" ];
-				description = "Symlink for unison conf";
-				serviceConfig = {
-					Type = "oneshot";
-					User = "vili";
-					ExecStartPre = ''${pkgs.coreutils-full}/bin/mkdir -p /home/vili/.unison''; 
-					ExecStart = ''${pkgs.coreutils-full}/bin/ln -sf ${unison-conf} /home/vili/.unison/cpu.prf''; 
-				};
-			};
-			unisonSync = {
-				wantedBy = [ "multi-user.target" ];
-				after = [ "network.target" ];
-				description = "unison filesync";
-				serviceConfig = {
-					Type = "exec";
-					User = "vili";
-					ExecStart = ''${pkgs.unison}/bin/unison -sshcmd ${pkgs.openssh}/bin/ssh cpu''; 
-				};
-			};
-		};
-
 
 # HARDWARE SPECIFIC
 		boot.initrd.kernelModules = [ "amdgpu" ];
