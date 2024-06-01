@@ -31,6 +31,7 @@
 			in
 			{
 				"~/Desktop" = default;
+				"~/Documents" = default;
 			};
 
 			options = {
