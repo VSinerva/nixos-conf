@@ -26,6 +26,7 @@
 						type = "trashcan";
 						params.cleanoutDays = "30";
 					};
+					fsWatcherDelayS = 1;
 				};
 			in
 			{
