@@ -16,6 +16,10 @@
 					id = "ZX35ARB-3ULEUV3-NNUEREF-DEDWOJU-GE7A4PP-T7O43NI-SU564OD-E26HHA4";
 					addresses = [ "tcp://nixos-cpu.vsinerva.fi:22000" ];
 				};
+				"phone" = {
+					id = "K6QCK2R-BU65RAC-PHTGLIA-24IHDXE-N6VNBAW-QYREMVD-XWGWKRA-VX2BNAK";
+					addresses = [ "tcp://172.16.0.3:22000" ];
+				};
 			};
 
 			folders =
@@ -30,7 +34,7 @@
 				};
 			in
 			{
-				"~/Documents" = default;
+				"~/Documents" = default // { devices = [ "helium" "nixos-cpu" "phone" ]; } ;
 				"~/Downloads" = default;
 				"~/Music" = default;
 				"~/Pictures" = default;
