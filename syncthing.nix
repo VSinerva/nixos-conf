@@ -31,7 +31,13 @@
 			in
 			{
 				"~/Documents" = default;
+				"~/Downloads" = default;
 				"~/Music" = default;
+				"~/Pictures" = default;
+				"~/Projects" = default;
+				"~/School" = default;
+				"~/Videos" = default;
+				"~/Zotero" = default;
 			};
 
 			options = {
