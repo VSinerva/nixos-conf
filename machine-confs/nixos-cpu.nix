@@ -6,6 +6,7 @@
 		../base.nix
 		../development.nix
 		../vili.nix
+		../syncthing.nix
 	];
 
 # HARDWARE SPECIFIC
