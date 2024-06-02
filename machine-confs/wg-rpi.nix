@@ -1,17 +1,17 @@
 { config, pkgs, lib, ... }:
 let
-        SSID = "ENTER_SSID";
-        SSIDpassword = "ENTER_PASSWORD";
-        interface = "wlan0";
-        wg_interface = "end0";
-        hostname = "netflix-huijaus";
-		  ddPassFile = "/root/wg-conf/ddPassFile";
+  SSID = "ENTER_SSID";
+  SSIDpassword = "ENTER_PASSWORD";
+  interface = "wlan0";
+  wg_interface = "end0";
+  hostname = "netflix-huijaus";
+  ddPassFile = "/root/wg-conf/ddPassFile";
 in {
-	imports = [
-		../base.nix
-	];
+  imports = [
+    ../base.nix
+  ];
 
-	environment.systemPackages = with pkgs; [ git wireguard-tools qrencode ];
+  environment.systemPackages = with pkgs; [ git wireguard-tools qrencode ];
 
   # enable NAT
   networking.nat.enable = true;
@@ -33,14 +33,14 @@ in {
       # This allows the wireguard server to route your traffic to the internet and hence be like a VPN
       # For this to work you have to set the dnsserver IP of your router (or dnsserver of choice) in your clients
       postSetup = ''
-${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o ${wg_interface} -j MASQUERADE
+      ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o ${wg_interface} -j MASQUERADE
       '';
 
-		# This undoes the above command
-		postShutdown = ''
-${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o ${wg_interface} -j MASQUERADE
+      # This undoes the above command
+      postShutdown = ''
+      ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o ${wg_interface} -j MASQUERADE
       '';
-		
+
 
       # Path to the private key file.
       #
@@ -78,39 +78,39 @@ ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o ${wg_int
     };
   };
 
-services.ddclient = {
-	enable = true;
-	domains = [ "netflood.ddnsfree.com" ];
-	use = "web, web=checkip.dynu.com/, web-skip='IP Address'";
-	server = "api.dynu.com";
-	username = "VSinerva";
-	passwordFile = ddPassFile;
-};
+  services.ddclient = {
+    enable = true;
+    domains = [ "netflood.ddnsfree.com" ];
+    use = "web, web=checkip.dynu.com/, web-skip='IP Address'";
+    server = "api.dynu.com";
+    username = "VSinerva";
+    passwordFile = ddPassFile;
+  };
 #################### EVERYTHING BELOW THIS SHOULD NOT NEED TO CHANGE ####################
 
-        boot = {
-                kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
-                initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
-                loader = {
-                        grub.enable = false;
-                        generic-extlinux-compatible.enable = true;
-                };
-        };
+  boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
+    initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
+    loader = {
+      grub.enable = false;
+      generic-extlinux-compatible.enable = true;
+    };
+  };
 
-        fileSystems = {
-                "/" = {
-                        device = "/dev/disk/by-label/NIXOS_SD";
-                        fsType = "ext4";
-                        options = [ "noatime" ];
-                };
-        };
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-label/NIXOS_SD";
+      fsType = "ext4";
+      options = [ "noatime" ];
+    };
+  };
 
-        networking = {
-                hostName = hostname;
-                wireless = {
-                        enable = false;
-                        networks."${SSID}".psk = SSIDpassword;
-                        interfaces = [ interface ];
-                };
-        };
+  networking = {
+    hostName = hostname;
+    wireless = {
+      enable = false;
+      networks."${SSID}".psk = SSIDpassword;
+      interfaces = [ interface ];
+    };
+  };
 }
