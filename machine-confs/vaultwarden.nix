@@ -1,17 +1,17 @@
 { config, pkgs, ... }:
 {
-	networking.hostName = "vaultwarden";
+  networking.hostName = "vaultwarden";
 
-	imports = [
-		../base.nix
-		../vaultwarden.nix
-	];
+  imports = [
+    ../base.nix
+    ../vaultwarden.nix
+  ];
 
 # HARDWARE SPECIFIC
 
-	services.qemuGuest.enable = true;
+services.qemuGuest.enable = true;
 
 # Bootloader.
-	boot.loader.systemd-boot.enable = true;
-	boot.loader.efi.canTouchEfiVariables = true;
+boot.loader.systemd-boot.enable = true;
+boot.loader.efi.canTouchEfiVariables = true;
 }
