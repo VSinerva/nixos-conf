@@ -59,6 +59,7 @@
 					coc-pyright
 					coc-tsserver
 					coc-rust-analyzer
+					vim-nix
 				];
 			};
 			customRC = 
