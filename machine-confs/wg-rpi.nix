@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   SSID = "ENTER_SSID";
   SSIDpassword = "ENTER_PASSWORD";
@@ -6,12 +11,15 @@ let
   wg_interface = "end0";
   hostname = "netflix-huijaus";
   ddPassFile = "/root/wg-conf/ddPassFile";
-in {
-  imports = [
-    ../base.nix
-  ];
+in
+{
+  imports = [ ../base.nix ];
 
-  environment.systemPackages = with pkgs; [ git wireguard-tools qrencode ];
+  environment.systemPackages = with pkgs; [
+    git
+    wireguard-tools
+    qrencode
+  ];
 
   # enable NAT
   networking.nat.enable = true;
@@ -33,14 +41,13 @@ in {
       # This allows the wireguard server to route your traffic to the internet and hence be like a VPN
       # For this to work you have to set the dnsserver IP of your router (or dnsserver of choice) in your clients
       postSetup = ''
-      ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o ${wg_interface} -j MASQUERADE
+        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o ${wg_interface} -j MASQUERADE
       '';
 
       # This undoes the above command
       postShutdown = ''
-      ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o ${wg_interface} -j MASQUERADE
+        ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o ${wg_interface} -j MASQUERADE
       '';
-
 
       # Path to the private key file.
       #
@@ -50,27 +57,33 @@ in {
       privateKeyFile = "/root/wg-conf/private";
 
       peers = [
-        { # Vili Android
+        {
+          # Vili Android
           publicKey = "niKpC3+Pi4HrYITlzROzqRcxzfzRw1rjpxeJVOr/WAw=";
           allowedIPs = [ "10.100.0.2/32" ];
         }
-        { # Miika Puhelin
+        {
+          # Miika Puhelin
           publicKey = "mcOs94W9jqn3SGgc8uWbnmUv0tja/P6tAvaCg3WYKlY=";
           allowedIPs = [ "10.100.0.3/32" ];
         }
-        { # Miika Kone
+        {
+          # Miika Kone
           publicKey = "7m7wnwNlmxZfUNvUOYNh4mTNbOsig7z2K/svUhDHFDY=";
           allowedIPs = [ "10.100.0.4/32" ];
         }
-        { # Silja Puhelin
+        {
+          # Silja Puhelin
           publicKey = "f6wWd6KD63xwnKkre/ZgZxPJv9GfAXK9Zx/EQEq8cik=";
           allowedIPs = [ "10.100.0.5/32" ];
         }
-        { # Silja Kone
+        {
+          # Silja Kone
           publicKey = "t9cmHc6/+0njdzsTFnnhEGKfhCa2VXFrTH9hF1jOCXw=";
           allowedIPs = [ "10.100.0.6/32" ];
         }
-        { # Vili helium
+        {
+          # Vili helium
           publicKey = "iGO375NT9EK5LH+E9vjPRRJp+UM4rZ2d1RMVR3f5R0c=";
           allowedIPs = [ "10.100.0.7/32" ];
         }
@@ -86,11 +99,15 @@ in {
     username = "VSinerva";
     passwordFile = ddPassFile;
   };
-#################### EVERYTHING BELOW THIS SHOULD NOT NEED TO CHANGE ####################
+  #################### EVERYTHING BELOW THIS SHOULD NOT NEED TO CHANGE ####################
 
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
-    initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "usbhid"
+      "usb_storage"
+    ];
     loader = {
       grub.enable = false;
       generic-extlinux-compatible.enable = true;
