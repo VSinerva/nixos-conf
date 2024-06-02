@@ -7,11 +7,11 @@
     ../nextcloud.nix
   ];
 
-# HARDWARE SPECIFIC
+  # HARDWARE SPECIFIC
 
-services.qemuGuest.enable = true;
+  services.qemuGuest.enable = true;
 
-# Bootloader.
-boot.loader.systemd-boot.enable = true;
-boot.loader.efi.canTouchEfiVariables = true;
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 }

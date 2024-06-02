@@ -1,7 +1,10 @@
 # Nextcloud instance
 { config, pkgs, ... }:
 {
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
   networking.firewall.allowedUDPPorts = [ 443 ];
 
   services.nextcloud = {
@@ -19,17 +22,17 @@
     };
   };
 
-  services.nginx.virtualHosts =
-    {
-      ${config.services.nextcloud.hostName} = {
-        forceSSL = true;
-        kTLS = true;
-        sslCertificate = "/var/lib/nextcloud/nextcloud_fullchain.pem";
-        sslCertificateKey = "/var/lib/nextcloud/nextcloud_privkey.pem";
-        locations = { 
-          "/".proxyWebsockets = true;
-          "~ ^\/nextcloud\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+|.+\/richdocumentscode\/proxy)\.php(?:$|\/)" = {};
-        };
+  services.nginx.virtualHosts = {
+    ${config.services.nextcloud.hostName} = {
+      forceSSL = true;
+      kTLS = true;
+      sslCertificate = "/var/lib/nextcloud/nextcloud_fullchain.pem";
+      sslCertificateKey = "/var/lib/nextcloud/nextcloud_privkey.pem";
+      locations = {
+        "/".proxyWebsockets = true;
+        "~ ^\/nextcloud\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+|.+\/richdocumentscode\/proxy)\.php(?:$|\/)" =
+          { };
       };
     };
-  }
+  };
+}
