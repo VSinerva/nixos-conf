@@ -201,15 +201,10 @@ let
       bindsym $mod+d exec --no-startup-id "rofi -theme 'Arc-Dark' -show combi -combi-modes 'run,ssh' -modes combi"
 
     # change focus
-    # bindsym $mod+i focus left
-    # bindsym $mod+n focus down
-    # bindsym $mod+e focus up
-    # bindsym $mod+o focus right
       bindsym $mod+h focus left
       bindsym $mod+j focus down
       bindsym $mod+k focus up
       bindsym $mod+l focus right
-    # MARK!
 
     # alternatively, you can use the cursor keys:
       bindsym $mod+Left focus left
@@ -218,15 +213,10 @@ let
       bindsym $mod+Right focus right
 
     # move focused window
-    # bindsym $mod+Shift+i move left
-    # bindsym $mod+Shift+n move down
-    # bindsym $mod+Shift+e move up
-    # bindsym $mod+Shift+o move right
       bindsym $mod+Shift+h move left
       bindsym $mod+Shift+j move down
       bindsym $mod+Shift+k move up
       bindsym $mod+Shift+l move right
-    # MARK!
 
     # alternatively, you can use the cursor keys:
       bindsym $mod+Shift+Left move left
@@ -235,9 +225,7 @@ let
       bindsym $mod+Shift+Right move right
 
     # split orientation
-    # bindsym $mod+h split h;exec notify-send 'tile horizontally'
       bindsym $mod+e split h;exec notify-send 'tile horizontally'
-    # MARK!
       bindsym $mod+v split v;exec notify-send 'tile vertically'
 
     # toggle fullscreen mode for the focused container
@@ -246,8 +234,6 @@ let
     # change container layout (stacked, tabbed, toggle split)
       bindsym $mod+s layout stacking
       bindsym $mod+w layout tabbed
-    # bindsym $mod+l layout toggle split
-    # MARK!
 
     # toggle tiling / floating
       bindsym $mod+Shift+space floating toggle
@@ -268,11 +254,6 @@ let
           bindsym j resize grow height 5 px or 5 ppt
           bindsym k resize shrink height 5 px or 5 ppt
           bindsym l resize grow width 5 px or 5 ppt
-          # bindsym i resize shrink width 5 px or 5 ppt
-          # bindsym n resize grow height 5 px or 5 ppt
-          # bindsym e resize shrink height 5 px or 5 ppt
-          # bindsym o resize grow width 5 px or 5 ppt
-    # MARK!
 
     # same bindings, but for the arrow keys
           bindsym Left resize shrink width 10 px or 10 ppt
@@ -374,99 +355,99 @@ let
       exec --no-startup-id nm-applet --sm-disable
   ''}";
   Xresources = "${pkgs.writeText "Xresources" ''
-    Xft.dpi:       96
-    Xft.antialias: true
-    Xft.hinting:   true
-    Xft.rgba:      rgb
-    Xft.autohint:  false
-    Xft.hintstyle: hintslight
-    Xft.lcdfilter: lcddefault
+                    Xft.dpi:       96
+                    Xft.antialias: true
+                    Xft.hinting:   true
+                    Xft.rgba:      rgb
+                    Xft.autohint:  false
+                    Xft.hintstyle: hintslight
+                    Xft.lcdfilter: lcddefault
 
-    XTerm*background:        #222D31
-    XTerm*foreground:        #d8d8d8
-    XTerm*pointerColor:      #1ABB9B
-    XTerm*faceName:          Fixed
-    XTerm*faceSize:          11
-    XTerm*reverseVideo:      on
-    XTerm*selectToClipboard: true
+                    XTerm*background:        #222D31
+                    XTerm*foreground:        #d8d8d8
+                    XTerm*pointerColor:      #1ABB9B
+                    XTerm*faceName:          Fixed
+                    XTerm*faceSize:          11
+                    XTerm*reverseVideo:      on
+                    XTerm*selectToClipboard: true
 
-    *background:                      #222D31
-    *foreground:                      #d8d8d8
-    *fading:                          8
-    *fadeColor:                       black
-    *cursorColor:                     #1ABB9B
-    *pointerColorBackground:          #2B2C2B
-    *pointerColorForeground:          #16A085
+                    *background:                      #222D31
+                    *foreground:                      #d8d8d8
+                    *fading:                          8
+                    *fadeColor:                       black
+                    *cursorColor:                     #1ABB9B
+                    *pointerColorBackground:          #2B2C2B
+                    *pointerColorForeground:          #16A085
 
-    !! black dark/light
-    *color0:                          #222D31
-    *color8:                          #585858
+                    !! black dark/light
+                    *color0:                          #222D31
+                    *color8:                          #585858
 
-    !! red dark/light
-    *color1:                          #ab4642
-    *color9:                          #ab4642
+                    !! red dark/light
+                    *color1:                          #ab4642
+                    *color9:                          #ab4642
 
-    !! green dark/light
-    *color2:                          #7E807E
-    *color10:                         #8D8F8D
+                    !! green dark/light
+                    *color2:                          #7E807E
+                    *color10:                         #8D8F8D
 
-    !! yellow dark/light
-    *color3:                          #f7ca88
-    *color11:                         #f7ca88
+                    !! yellow dark/light
+                    *color3:                          #f7ca88
+                    *color11:                         #f7ca88
 
-    !! blue dark/light
-    *color4:                          #7cafc2
-    *color12:                         #7cafc2
+                    !! blue dark/light
+                    *color4:                          #7cafc2
+                    *color12:                         #7cafc2
 
-    !! magenta dark/light
-    *color5:                          #ba8baf
-    *color13:                         #ba8baf
+                    !! magenta dark/light
+                    *color5:                          #ba8baf
+                    *color13:                         #ba8baf
 
-    !! cyan dark/light
-    *color6:                          #1ABB9B
-    *color14:                         #1ABB9B
+                    !! cyan dark/light
+                    *color6:                          #1ABB9B
+                    *color14:                         #1ABB9B
 
-    !! white dark/light
-    *color7:                          #d8d8d8
-    *color15:                         #f8f8f8
+                    !! white dark/light
+                    *color7:                          #d8d8d8
+                    *color15:                         #f8f8f8
 
-    Xcursor.theme: xcursor-breeze
-    Xcursor.size:                     0
+                    Xcursor.theme: xcursor-breeze
+                    Xcursor.size:                     0
 
-    URxvt.font:                       9x15,xft:TerminessTTFNerdFontMono
+                    URxvt.font:                       9x15,xft:TerminessTTFNerdFontMono
 
-    ! alternative font settings with 'terminus':
-    ! URxvt.font:      -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
-    ! URxvt.bold.font: -xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso10646-1
-    !! terminus names see end of file!
+                    ! alternative font settings with 'terminus':
+                    ! URxvt.font:      -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
+                    ! URxvt.bold.font: -xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso10646-1
+                    !! terminus names see end of file!
 
-    URxvt.depth:                      32
-    URxvt.background:                 [100]#0f0f0f
-    URxvt.foreground:                 #a0a0a0
-    URxvt*scrollBar:                  false
-    URxvt*mouseWheelScrollPage:       false
-    URxvt*cursorBlink:                true
-    URxvt*background:                 black
-    URxvt*saveLines:                  5000
+                    URxvt.depth:                      32
+                    URxvt.background:                 [100]#gf0f0f
+    					URxvt.foreground:                 #a0a0a0
+                    URxvt*scrollBar:                  false
+                    URxvt*mouseWheelScrollPage:       false
+                    URxvt*cursorBlink:                true
+                    URxvt*background:                 black
+                    URxvt*saveLines:                  5000
 
-    ! for 'fake' transparency (without Compton) uncomment the following three lines
-    ! URxvt*inheritPixmap:            true
-    ! URxvt*transparent:              true
-    ! URxvt*shading:                  138
+                    ! for 'fake' transparency (without Compton) uncomment the following three lines
+                    ! URxvt*inheritPixmap:            true
+                    ! URxvt*transparent:              true
+                    ! URxvt*shading:                  138
 
-    ! Normal copy-paste keybindings without perls
-    URxvt.iso14755:                   false
-    URxvt.keysym.Shift-Control-V:     eval:paste_clipboard
-    URxvt.keysym.Shift-Control-C:     eval:selection_to_clipboard
-    !Xterm escape codes, word by word movement
-    URxvt.keysym.Control-Left:        \033[1;5D
-    URxvt.keysym.Shift-Control-Left:  \033[1;6D
-    URxvt.keysym.Control-Right:       \033[1;5C
-    URxvt.keysym.Shift-Control-Right: \033[1;6C
-    URxvt.keysym.Control-Up:          \033[1;5A
-    URxvt.keysym.Shift-Control-Up:    \033[1;6A
-    URxvt.keysym.Control-Down:        \033[1;5B
-    URxvt.keysym.Shift-Control-Down:  \033[1;6B
+                    ! Normal copy-paste keybindings without perls
+                    URxvt.iso14755:                   false
+                    URxvt.keysym.Shift-Control-V:     eval:paste_clipboard
+                    URxvt.keysym.Shift-Control-C:     eval:selection_to_clipboard
+                    !Xterm escape codes, word by word movement
+                    URxvt.keysym.Control-Left:        \033[1;5D
+                    URxvt.keysym.Shift-Control-Left:  \033[1;6D
+                    URxvt.keysym.Control-Right:       \033[1;5C
+                    URxvt.keysym.Shift-Control-Right: \033[1;6C
+                    URxvt.keysym.Control-Up:          \033[1;5A
+                    URxvt.keysym.Shift-Control-Up:    \033[1;6A
+                    URxvt.keysym.Control-Down:        \033[1;5B
+                    URxvt.keysym.Shift-Control-Down:  \033[1;6B
   ''}";
 in
 {

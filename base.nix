@@ -3,7 +3,7 @@
 {
   #################### Packages ####################
   environment.systemPackages = with pkgs; [
-    rxvt-unicode-emoji
+    rxvt-unicode
     tmux
     git
     nano
@@ -50,10 +50,6 @@
     bind v split-window -h
 
     # Smart pane switching with awareness of Vim splits.
-    # bind -n C-i run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-i) || tmux select-pane -L"
-    # bind -n C-n run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-n) || tmux select-pane -D"
-    # bind -n C-e run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-e) || tmux select-pane -U"
-    # bind -n C-o run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-o) || tmux select-pane -R"
     bind -n C-h run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-h) || tmux select-pane -L"
     bind -n C-j run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-j) || tmux select-pane -D"
     bind -n C-k run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-k) || tmux select-pane -U"
@@ -65,10 +61,6 @@
     bind -n C-Down select-pane -D
 
     # resize panes more easily
-    # bind -r i resize-pane -L 10
-    # bind -r n resize-pane -D 10
-    # bind -r e resize-pane -U 10
-    # bind -r o resize-pane -R 10
     bind -r h resize-pane -L 10
     bind -r j resize-pane -D 10
     bind -r k resize-pane -U 10
@@ -77,7 +69,6 @@
     bind M-c attach -c "#{pane_current_path}" 
 
     set -s escape-time 0
-    # unbind -n tab
   '';
 
   #################### SSH configuration ####################
