@@ -7,12 +7,11 @@ let
     url = "https://github.com/VSinerva/nixos-conf.git";
     name = "nixos-conf-github";
     ref = "main";
+    publicKey = "AAAAC3NzaC1lZDI1NTE5AAAAIBbGREoK1uVny1s8FK3KZ74Wmaf0VtifhqPyK69C/Gez";
   };
 in
 {
-  # Verification will be available soon, so keeping this here as a reminder
-  #		publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBbGREoK1uVny1s8FK3KZ74Wmaf0VtifhqPyK69C/Gez vili@helium";
-  #	nix.settings.experimental-features = "verified-fetches";
+  nix.settings.experimental-features = "verified-fetches";
 
   imports = [
     ./hardware-configuration.nix
