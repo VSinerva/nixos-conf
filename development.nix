@@ -55,6 +55,7 @@
           vim-gitgutter
           vim-fugitive
           vim-tmux-navigator
+          vim-sleuth
           coc-nvim
           coc-pairs
           coc-clangd
