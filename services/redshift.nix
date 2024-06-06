@@ -1,6 +1,12 @@
 # Redshift bluelight reducer
 { config, pkgs, ... }:
 {
+  assertions = [
+    {
+      assertion = config.services.xserver.enable;
+      message = "Redshift does not work without a desktop!";
+    }
+  ];
   services = {
     redshift = {
       executable = "/bin/redshift-gtk";

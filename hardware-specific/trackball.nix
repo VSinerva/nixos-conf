@@ -1,6 +1,13 @@
 # Config for my Logitech trackball
 { config, pkgs, ... }:
 {
+  assertions = [
+    {
+      assertion = config.services.xserver.enable;
+      message = "Trackball does not work without a desktop!";
+    }
+  ];
+
   disabledModules = [ "services/hardware/libinput.nix" ];
 
   nixpkgs.overlays = [

@@ -1,4 +1,4 @@
-# Nextcloud instance
+# Vaultwarden instance
 { config, pkgs, ... }:
 {
   networking.firewall.allowedTCPPorts = [
