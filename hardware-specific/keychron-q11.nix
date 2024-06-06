@@ -1,7 +1,7 @@
 # Config for Keychron Q11 keyboard
 { config, pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [ via ];
+  environment.systemPackages = with pkgs; if config.services.xserver.enable then [ via ] else [ ];
 
   # Keychron Q11
   services.udev.extraRules = ''

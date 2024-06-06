@@ -451,6 +451,13 @@ let
   ''}";
 in
 {
+  assertions = [
+    {
+      assertion = config.users.users ? "vili";
+      message = "User 'vili' needed for desktop!";
+    }
+  ];
+
   environment.systemPackages = with pkgs; [
     i3status
     rofi

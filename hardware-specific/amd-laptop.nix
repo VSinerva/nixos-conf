@@ -8,7 +8,7 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   services = {
-    xserver = {
+    xserver = pkgs.lib.mkIf config.services.xserver.enable {
       videoDrivers = [
         "amdgpu"
         "modesetting"
