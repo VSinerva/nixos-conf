@@ -4,7 +4,7 @@
   services.syncthing = {
     enable = true;
     user = "vili";
-    dataDir = "/home/vili/";
+    dataDir = config.users.users.${config.services.syncthing.user}.home;
 
     settings = {
       devices = {
