@@ -4,7 +4,7 @@
 
   imports = [
     ../base.nix
-    ../vaultwarden.nix
+    ../services/vaultwarden.nix
   ];
 
   # HARDWARE SPECIFIC

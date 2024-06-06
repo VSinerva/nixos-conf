@@ -58,8 +58,8 @@
 
   imports = [
     ../base.nix
-    ../vili.nix
-    ../syncthing.nix
+    ../users/vili.nix
+    ../services/syncthing.nix
     ../desktop.nix
     ../development.nix
     ../misc/libinput.nix
