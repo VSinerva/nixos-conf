@@ -4,7 +4,7 @@
 
   imports = [
     ../base.nix
-    ../nextcloud.nix
+    ../services/nextcloud.nix
   ];
 
   # HARDWARE SPECIFIC

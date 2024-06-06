@@ -5,8 +5,8 @@
   imports = [
     ../base.nix
     ../development.nix
-    ../vili.nix
-    ../syncthing.nix
+    ../users/vili.nix
+    ../services/syncthing.nix
   ];
 
   # HARDWARE SPECIFIC
