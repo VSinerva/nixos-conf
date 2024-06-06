@@ -7,10 +7,12 @@
 {
   networking = {
     hostName = "helium";
+
     firewall.allowedUDPPorts = [
       51820
       51821
     ];
+
     wg-quick.interfaces = {
       wg0 = {
         autostart = false;
@@ -59,154 +61,35 @@
   imports = [
     ../base.nix
     ../users/vili.nix
-    ../services/syncthing.nix
     ../desktop.nix
     ../development.nix
-    ../misc/libinput.nix
-  ];
-  disabledModules = [ "services/hardware/libinput.nix" ];
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      moonlight-qt = prev.moonlight-qt.overrideAttrs (old: {
-        patches = (old.patches or [ ]) ++ [ ../misc/mouse-accel.patch ];
-      });
-    })
+    ../services/syncthing.nix
+    ../services/redshift.nix
+    ../services/game-streaming.nix
+    ../hardware-specific/keychron-q11.nix
+    ../hardware-specific/trackball.nix
+    ../hardware-specific/amd-laptop.nix
+    ../hardware-specific/usb-automount.nix
   ];
 
-  environment.systemPackages = with pkgs; [
-    zenmonitor
-    moonlight-qt
-    parsec-bin
-    via
-  ];
+  services.xserver.displayManager.setupCommands = ''
+    ${pkgs.xorg.xrandr}/bin/xrandr --output DisplayPort-0 --auto --pos 0x0 --primary --output eDP --auto --pos 3840x360
+  '';
 
-  # HARDWARE SPECIFIC
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  hardware = {
-    opengl.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
-    logitech.wireless = {
-      enable = true;
-      enableGraphical = true;
+  boot = {
+    resumeDevice = "/dev/mapper/luks-f6e1979b-0dee-4ee9-8170-10490019854b";
+    kernelParams = [ "resume_offset=44537856" ];
+
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
     };
   };
 
-  services = {
-    xserver = {
-      videoDrivers = [
-        "amdgpu"
-        "modesetting"
-      ];
-      deviceSection = ''
-        Option "DRI" "2"
-        Option "TearFree" "true"
-      '';
-
-      displayManager.setupCommands = ''
-        ${pkgs.xorg.xrandr}/bin/xrandr --output DisplayPort-0 --auto --pos 0x0 --primary --output eDP --auto --pos 3840x360
-      '';
-    };
-
-    libinput.mouse = {
-      accelProfile = "custom";
-      accelPointsMotion = [
-        0.0
-        2.0e-2
-        4.0e-2
-        6.0e-2
-        8.0e-2
-        0.1
-        0.12
-        0.14
-        0.16
-        0.18
-        0.2
-        0.2525
-        0.31
-        0.3725
-        0.44
-        0.5125
-        0.59
-        0.6725
-        0.76
-        0.8525
-        0.95
-        1.155
-        1.37
-        1.595
-        1.83
-        2.075
-        2.33
-        2.595
-        2.87
-        3.155
-        3.45
-        3.755
-        4.07
-        4.395
-        4.73
-        5.075
-        5.43
-        5.795
-        6.17
-        6.555
-        6.95
-        7.355
-        7.77
-        8.195
-        8.63
-        9.075
-        9.53
-        9.995
-        10.47
-        10.955
-        11.45
-        11.95
-      ];
-      accelStepMotion = 5.0e-2;
-    };
-
-    redshift = {
-      executable = "/bin/redshift-gtk";
-      enable = true;
-      temperature = {
-        night = 2800;
-        day = 6500;
-      };
-      brightness = {
-        night = "0.5";
-        day = "1";
-      };
-    };
-
-    devmon.enable = true;
-    gvfs.enable = true;
-    udisks2.enable = true;
-  };
-  location = {
-    latitude = 60.17;
-    longitude = 24.94;
-  };
-
-  # Swap + hibernate
   swapDevices = [
     {
       device = "/var/lib/swapfile";
       size = 16 * 1024;
     }
   ];
-  boot.resumeDevice = "/dev/mapper/luks-f6e1979b-0dee-4ee9-8170-10490019854b";
-  boot.kernelParams = [ "resume_offset=44537856" ];
-  services.logind = {
-    lidSwitch = "hibernate";
-  };
-
-  # Keychron Q11
-  services.udev.extraRules = ''
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="01e0", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
-  '';
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 }
