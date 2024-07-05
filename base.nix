@@ -72,11 +72,30 @@
   '';
 
   #################### SSH configuration ####################
-  services.openssh.enable = true;
-  services.openssh.settings.PasswordAuthentication = false;
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+  };
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBbGREoK1uVny1s8FK3KZ74Wmaf0VtifhqPyK69C/Gez vili@helium"
   ];
+
+  #################### Basic fail2ban configuration ####################
+  services.fail2ban = {
+    enable = true;
+    bantime = "1h";
+    bantime-increment = {
+      enable = true;
+      factor = "2";
+      formula = "ban.Time * (1 << (min(ban.Count, 6) * banFactor))";
+      maxtime = "90d";
+    };
+    jails = {
+      DEFAULT.settings = {
+        findtime = 3600;
+      };
+    };
+  };
 
   #################### BASE ####################
   nixpkgs.config.allowUnfree = true;
