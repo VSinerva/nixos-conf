@@ -192,7 +192,7 @@ let
       floating_modifier $mod
 
     # start a terminal
-      bindsym $mod+Return exec urxvt
+      bindsym $mod+Return exec alacritty
 
     # kill focused window
       bindsym $mod+Shift+q kill
