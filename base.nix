@@ -3,7 +3,7 @@
 {
   #################### Packages ####################
   environment.systemPackages = with pkgs; [
-    rxvt-unicode
+    alacritty
     tmux
     git
     nano
