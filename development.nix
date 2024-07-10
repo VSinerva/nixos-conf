@@ -62,7 +62,6 @@
           coc-cmake
           coc-docker
           coc-json
-          coc-ltex
           coc-markdownlint
           coc-sh
           coc-toml
