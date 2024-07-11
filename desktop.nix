@@ -60,12 +60,12 @@ in
       };
       windowManager.i3 = {
         enable = true;
-        configFile = (
-          import ./i3.nix {
+        configFile = "${
+          (import ./i3.nix {
             inherit config;
             inherit pkgs;
-          }
-        );
+          })
+        }";
       };
     };
 
