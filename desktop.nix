@@ -60,7 +60,12 @@ in
       };
       windowManager.i3 = {
         enable = true;
-        configFile = ./program-config-files/i3.conf;
+        configFile = (
+          import ./i3.nix {
+            inherit config;
+            inherit pkgs;
+          }
+        );
       };
     };
 
@@ -95,17 +100,6 @@ in
   qt = {
     enable = true;
     style = "breeze";
-  };
-
-  systemd.services.i3statusSymlink = {
-    wantedBy = [ "multi-user.target" ];
-    description = "Symlink for i3status";
-    serviceConfig = {
-      Type = "oneshot";
-      User = "vili";
-      ExecStartPre = ''${pkgs.coreutils-full}/bin/mkdir -p /home/vili/.config/i3status'';
-      ExecStart = ''${pkgs.coreutils-full}/bin/ln -sf ${./program-config-files/i3status.conf} /home/vili/.config/i3status/config'';
-    };
   };
 
   xdg.mime.defaultApplications = {
