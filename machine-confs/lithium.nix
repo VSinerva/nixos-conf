@@ -5,10 +5,9 @@
   ...
 }:
 {
-  networking = {
-    hostName = "lithium";
+  networking.hostName = "lithium";
 
-imports = [
+  imports = [
     ../base.nix
     ../users/vili.nix
     ../desktop.nix
