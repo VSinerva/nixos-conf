@@ -1,4 +1,87 @@
 { config, pkgs, ... }:
+let
+  i3status-conf = "${pkgs.writeText "i3status-conf" ''
+    # i3status configuration file.
+    # see "man i3status" for documentation.
+
+    # It is important that this file is edited as UTF-8.
+    # The following line should contain a sharp s:
+    # ß
+    # If the above line is not correctly displayed, fix your editor first!
+
+    general {
+    	output_format = "i3bar"
+    		colors = true
+    		interval = 5
+    		color_good = "#2AA198"
+    		color_bad = "#586E75"
+    		color_degraded = "#DC322F"
+    }
+
+    order += "battery all"
+    order += "cpu_usage"
+    order += "memory"
+    order += "ethernet _first_"
+    order += "wireless _first_"
+    order += "disk /"
+    order += "tztime local"
+    order += "tztime helsinki"
+
+    cpu_usage {
+    	format = " CPU  %usage "
+    }
+
+    disk "/" {
+    # format = " hdd %avail "
+    	format = " ⛁ %avail "
+    }
+
+    ethernet _first_ {
+    	format_up = " LAN: %ip "
+    		format_down = " No LAN "
+    }
+
+    wireless _first_ {
+    	format_up = " %quality%essid: %ip "
+    		format_down = ""
+    }
+
+    battery all {
+    # format = "%status %percentage %remaining %emptytime"
+    	format = " bat %status %percentage (%remaining left) "
+    		format_down = ""
+    		last_full_capacity = true
+    		integer_battery_capacity = true
+    # status_chr = ""
+    		status_chr = "⚡"
+    # status_bat = "bat"
+    # status_bat = "☉"
+    # status_bat = ""
+    		status_bat = ""
+    # status_unk = "?"
+    		status_unk = ""
+    # status_full = ""
+    		status_full = "☻"
+    		low_threshold = 30
+    		threshold_type = time
+    }
+
+    memory {
+    	format = " RAM %used / %total "
+    		threshold_degraded = "10%"
+    }
+
+    tztime local {
+    	format = " %d.%m. %H:%M "
+    }
+
+    tztime helsinki {
+    	format = " (HEL %H:%M) "
+    		timezone = "Europe/Helsinki"
+    		hide_if_equals_localtime = true
+    }
+  ''}";
+in
 pkgs.writeText "i3-conf" ''
   # Set mod key (Mod1=<Alt>, Mod4=<Super>)
   set $mod Mod4
@@ -199,7 +282,7 @@ pkgs.writeText "i3-conf" ''
   # Start i3bar to display a workspace bar (plus the system information i3status if available)
   bar {
   	i3bar_command i3bar
-  		status_command i3status -c ${./program-config-files/i3status.conf}
+  		status_command i3status -c ${i3status-conf}
   		position bottom
 
   ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
