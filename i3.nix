@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 let
   i3status-conf = "${pkgs.writeText "i3status-conf" ''
-    # i3status configuration file.
-    # see "man i3status" for documentation.
-
     # It is important that this file is edited as UTF-8.
     # The following line should contain a sharp s:
     # ß
@@ -12,7 +9,7 @@ let
     general {
     	output_format = "i3bar"
     		colors = true
-    		interval = 5
+    		interval = 1
     		color_good = "#2AA198"
     		color_bad = "#586E75"
     		color_degraded = "#DC322F"
@@ -27,13 +24,22 @@ let
     order += "tztime local"
     order += "tztime helsinki"
 
+    battery all {
+    	format = " %status %percentage (%remaining @ %consumption) "
+    		format_down = ""
+    		last_full_capacity = true
+    		integer_battery_capacity = true
+    		low_threshold = 30
+    		threshold_type = time
+    }
+
     cpu_usage {
     	format = " CPU  %usage "
     }
 
-    disk "/" {
-    # format = " hdd %avail "
-    	format = " ⛁ %avail "
+    memory {
+    	format = " RAM %used / %total "
+    		threshold_degraded = "10%"
     }
 
     ethernet _first_ {
@@ -46,33 +52,12 @@ let
     		format_down = ""
     }
 
-    battery all {
-    # format = "%status %percentage %remaining %emptytime"
-    	format = " bat %status %percentage (%remaining left) "
-    		format_down = ""
-    		last_full_capacity = true
-    		integer_battery_capacity = true
-    # status_chr = ""
-    		status_chr = "⚡"
-    # status_bat = "bat"
-    # status_bat = "☉"
-    # status_bat = ""
-    		status_bat = ""
-    # status_unk = "?"
-    		status_unk = ""
-    # status_full = ""
-    		status_full = "☻"
-    		low_threshold = 30
-    		threshold_type = time
-    }
-
-    memory {
-    	format = " RAM %used / %total "
-    		threshold_degraded = "10%"
+    disk "/" {
+    	format = " ⛁ %avail "
     }
 
     tztime local {
-    	format = " %d.%m. %H:%M "
+    	format = " %Y-%m-%d %H:%M:%S "
     }
 
     tztime helsinki {
