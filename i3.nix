@@ -57,7 +57,7 @@ let
     }
 
     tztime local {
-            format = " %Y-%m-%d %H:%M:%S "
+            format = " %d.%m. %H:%M "
     }
 
     tztime helsinki {
