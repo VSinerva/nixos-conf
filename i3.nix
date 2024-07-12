@@ -71,86 +71,23 @@ pkgs.writeText "i3-conf" ''
   # Set mod key (Mod1=<Alt>, Mod4=<Super>)
   set $mod Mod4
 
-  # Use Mouse+$mod to drag floating windows
-  floating_modifier $mod
 
-  # start a terminal
-  bindsym $mod+Return exec alacritty
-
-  # kill focused window
-  bindsym $mod+Shift+q kill
-
-  # start program launcher
-  bindsym $mod+d exec --no-startup-id "rofi -theme 'Arc-Dark' -show combi -combi-modes 'window,drun,run' -modes combi"
-
-  # change focus
-  bindsym $mod+h focus left
-  bindsym $mod+j focus down
-  bindsym $mod+k focus up
-  bindsym $mod+l focus right
-
-  # alternatively, you can use the cursor keys:
-  bindsym $mod+Left focus left
-  bindsym $mod+Down focus down
-  bindsym $mod+Up focus up
-  bindsym $mod+Right focus right
-
-  # move focused window
-  bindsym $mod+Shift+h move left
-  bindsym $mod+Shift+j move down
-  bindsym $mod+Shift+k move up
-  bindsym $mod+Shift+l move right
-
-  # alternatively, you can use the cursor keys:
-  bindsym $mod+Shift+Left move left
-  bindsym $mod+Shift+Down move down
-  bindsym $mod+Shift+Up move up
-  bindsym $mod+Shift+Right move right
-
-  # split orientation
-  bindsym $mod+s split h
-  bindsym $mod+v split v
-
-  # toggle fullscreen mode for the focused container
-  bindsym $mod+f fullscreen toggle
-
-  # toggle tiling / floating
-  bindsym $mod+Shift+space floating toggle
-
-  # change focus between tiling / floating windows
-  bindsym $mod+space focus mode_toggle
-
-  # reload the configuration file
-  bindsym $mod+Shift+c reload
-
-  # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-  bindsym $mod+Shift+r restart
-
-  bindsym $mod+r mode "resize"
-  mode "resize" {
-          bindsym h resize shrink width 5 px or 5 ppt
-          bindsym j resize grow height 5 px or 5 ppt
-          bindsym k resize shrink height 5 px or 5 ppt
-          bindsym l resize grow width 5 px or 5 ppt
-
-          bindsym Return mode "default"
-          bindsym Escape mode "default"
-  }
-
-  # Configure border style <normal|1pixel|pixel xx|none|pixel>
-  default_border pixel 3
 
   exec --no-startup-id nm-applet --sm-disable
+  for_window [window_type="notification"] floating enable
 
   # Screen brightness controls
   bindcode 232 exec --no-startup-id brightnessctl set 5%-
   bindcode 233 exec --no-startup-id brightnessctl set 5%+
 
-  for_window [window_type="notification"] floating enable
+  bindsym $mod+Return exec alacritty
+  bindsym $mod+d exec --no-startup-id "rofi -theme 'Arc-Dark' -show combi -combi-modes 'window,drun,run' -modes combi"
 
-  gaps inner 2 
+
 
   font xft:DejaVuSansMono-Book 14
+  default_border pixel 3
+  gaps inner 2 
 
   bar {
           i3bar_command i3bar
@@ -168,6 +105,47 @@ pkgs.writeText "i3-conf" ''
                   active_workspace   #303030 #505050 #d0d0d0
           }
   }
+
+
+
+  bindsym $mod+Shift+q kill
+
+  floating_modifier $mod
+
+  bindsym $mod+s split h
+  bindsym $mod+v split v
+
+  bindsym $mod+f fullscreen toggle
+  bindsym $mod+Shift+space floating toggle
+  bindsym $mod+space focus mode_toggle
+
+  bindsym $mod+Shift+c reload
+  bindsym $mod+Shift+r restart
+
+
+
+  bindsym $mod+h focus left
+  bindsym $mod+j focus down
+  bindsym $mod+k focus up
+  bindsym $mod+l focus right
+
+  bindsym $mod+Shift+h move left
+  bindsym $mod+Shift+j move down
+  bindsym $mod+Shift+k move up
+  bindsym $mod+Shift+l move right
+
+  bindsym $mod+r mode "resize"
+  mode "resize" {
+          bindsym h resize shrink width 5 px or 5 ppt
+          bindsym j resize grow height 5 px or 5 ppt
+          bindsym k resize shrink height 5 px or 5 ppt
+          bindsym l resize grow width 5 px or 5 ppt
+
+          bindsym Return mode "default"
+          bindsym Escape mode "default"
+  }
+
+
 
   # switch to workspace
   bindsym $mod+1 workspace 1
