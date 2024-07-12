@@ -7,12 +7,12 @@ let
     # If the above line is not correctly displayed, fix your editor first!
 
     general {
-    	output_format = "i3bar"
-    		colors = true
-    		interval = 1
-    		color_good = "#2AA198"
-    		color_bad = "#586E75"
-    		color_degraded = "#DC322F"
+            output_format = "i3bar"
+            colors = true
+            interval = 1
+            color_good = "#2AA198"
+            color_bad = "#586E75"
+            color_degraded = "#DC322F"
     }
 
     order += "battery all"
@@ -25,45 +25,45 @@ let
     order += "tztime helsinki"
 
     battery all {
-    	format = " %status %percentage (%remaining @ %consumption) "
-    		format_down = ""
-    		last_full_capacity = true
-    		integer_battery_capacity = true
-    		low_threshold = 30
-    		threshold_type = time
+            format = " %status %percentage (%remaining @ %consumption) "
+            format_down = ""
+            last_full_capacity = true
+            integer_battery_capacity = true
+            low_threshold = 30
+            threshold_type = time
     }
 
     cpu_usage {
-    	format = " CPU  %usage "
+            format = " CPU  %usage "
     }
 
     memory {
-    	format = " RAM %used / %total "
-    		threshold_degraded = "10%"
+            format = " RAM %used / %total "
+            threshold_degraded = "10%"
     }
 
     ethernet _first_ {
-    	format_up = " LAN: %ip "
-    		format_down = " No LAN "
+            format_up = " LAN: %ip "
+            format_down = " No LAN "
     }
 
     wireless _first_ {
-    	format_up = " %quality%essid: %ip "
-    		format_down = ""
+            format_up = " %quality%essid: %ip "
+            format_down = ""
     }
 
     disk "/" {
-    	format = " ⛁ %avail "
+            format = " ⛁ %avail "
     }
 
     tztime local {
-    	format = " %Y-%m-%d %H:%M:%S "
+            format = " %Y-%m-%d %H:%M:%S "
     }
 
     tztime helsinki {
-    	format = " (HEL %H:%M) "
-    		timezone = "Europe/Helsinki"
-    		hide_if_equals_localtime = true
+            format = " (HEL %H:%M) "
+            timezone = "Europe/Helsinki"
+            hide_if_equals_localtime = true
     }
   ''}";
 in
