@@ -117,7 +117,6 @@
           " delays and poor user experience
           set updatetime=300
 
-
           " Make <CR> to accept selected completion item or notify coc.nvim to format
           " <C-g>u breaks current undo, please make your own choice.
           inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
@@ -145,7 +144,9 @@
 
           augroup nixcmd
              autocmd!
+             autocmd BufWritePre *.nix mkview
              autocmd BufWritePre *.nix %!nixfmt
+             autocmd BufWritePost *.nix loadview
           augroup END
         '';
     };
