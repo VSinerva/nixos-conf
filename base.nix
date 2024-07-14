@@ -30,6 +30,7 @@
       ZSH_TMUX_AUTOSTART=false
       ZSH_TMUX_AUTOQUIT=false
       ZSH_TMUX_CONFIG=/etc/tmux.conf
+      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
     '';
     promptInit = ''
       if [ -n "$IN_NIX_SHELL" ]; then 
