@@ -6,7 +6,7 @@
     alacritty
     tmux
     git
-    nano
+    nvi
     p7zip
     tree
   ];
