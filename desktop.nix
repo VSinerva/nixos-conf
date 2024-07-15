@@ -27,7 +27,6 @@ in
     rofi
     arandr
     btop
-    firefox
     telegram-desktop
     signal-desktop
     discord
