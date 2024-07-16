@@ -49,12 +49,12 @@
           coc-docker
           coc-json
           coc-markdownlint
+          coc-pyright
+          coc-rust-analyzer
           coc-sh
           coc-toml
-          coc-yaml
-          coc-pyright
           coc-tsserver
-          coc-rust-analyzer
+          coc-yaml
         ];
       };
       customRC =
@@ -81,7 +81,6 @@
           set foldmethod=syntax
 
           set number
-          " set relativenumber
           set colorcolumn=100
           set signcolumn=yes
           let NERDTreeShowLineNumbers=1
@@ -119,7 +118,6 @@
           autocmd StdinReadPre * let s:std_in=1
           autocmd VimEnter * NERDTree | if argc() > 0 || exists('s:std_in') | wincmd p | endif
 
-          let g:coc_filetype_map = {'tex': 'latex'}
           let g:coc_config_home = "${coc-config}"
 
           let g:tmux_navigator_no_mappings = 1
