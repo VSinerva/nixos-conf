@@ -16,7 +16,6 @@ in
   imports = [ ../base.nix ];
 
   environment.systemPackages = with pkgs; [
-    git
     wireguard-tools
     qrencode
   ];
@@ -100,6 +99,18 @@ in
     passwordFile = ddPassFile;
   };
   #################### EVERYTHING BELOW THIS SHOULD NOT NEED TO CHANGE ####################
+
+  nix.settings = {
+    cores = 3;
+    max-jobs = 2;
+  };
+
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 8 * 1024;
+    }
+  ];
 
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
