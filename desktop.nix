@@ -26,7 +26,6 @@ in
     i3status
     rofi
     arandr
-    btop
     telegram-desktop
     signal-desktop
     discord
