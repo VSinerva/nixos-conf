@@ -9,6 +9,7 @@
     nvi
     p7zip
     tree
+    btop
   ];
 
   #################### ZSH configuration ####################
