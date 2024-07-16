@@ -24,20 +24,7 @@
 
   #################### Packages ####################
   environment.systemPackages = with pkgs; [
-    cmake
-    gnumake
-    gcc
-    gdb
     nodejs-slim
-    clang
-    clang-tools
-    clang-analyzer
-    docker-compose
-    docker
-    python311
-    python311Packages.pip
-    pypy3
-    rustup
     nixfmt-rfc-style
   ];
 
