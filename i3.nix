@@ -147,6 +147,27 @@ pkgs.writeText "i3-conf" ''
 
 
 
+  workspace 1 output primary
+  workspace 2 output primary
+  workspace 3 output primary
+  workspace 4 output primary
+  workspace 5 output primary
+  workspace 6 output primary
+  workspace 7 output primary
+  workspace 8 output primary
+  workspace 9 output primary
+  workspace 10 output primary
+  workspace 11 output eDP primary
+  workspace 12 output eDP primary
+  workspace 13 output eDP primary
+  workspace 14 output eDP primary
+  workspace 15 output eDP primary
+  workspace 16 output eDP primary
+  workspace 17 output eDP primary
+  workspace 18 output eDP primary
+  workspace 19 output eDP primary
+  workspace 20 output eDP primary
+
   # switch to workspace
   bindsym $mod+1 workspace 1
   bindsym $mod+2 workspace 2
