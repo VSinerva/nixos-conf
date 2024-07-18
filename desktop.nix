@@ -59,7 +59,7 @@ in
       windowManager.i3 = {
         enable = true;
         configFile = "${
-          (import ./i3.nix {
+          (import ./program-config-files/i3.nix {
             inherit config;
             inherit pkgs;
           })
