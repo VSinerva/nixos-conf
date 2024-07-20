@@ -78,6 +78,8 @@ in
   nixpkgs.config.pulseaudio = true;
   hardware.pulseaudio.enable = true;
 
+  security.polkit.enable = true;
+
   programs.firefox = {
     preferences = {
       "media.ffmpeg.vaapi.enabled" = true;
@@ -94,17 +96,14 @@ in
       };
     };
   };
-
-  qt = {
-    enable = true;
-    style = "breeze";
-  };
-
   xdg.mime.defaultApplications = {
     "application/pdf" = "org.gnome.Evince.desktop";
     "text/plain" = "org.xfce.mousepad.desktop";
     "inode/directory" = "pcmanfm.description";
   };
 
-  security.polkit.enable = true;
+  qt = {
+    enable = true;
+    style = "breeze";
+  };
 }
