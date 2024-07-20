@@ -109,9 +109,55 @@ in
     platformTheme = "gnome";
   };
 
-  environment.etc = {
-    "gtk-2.0/gtkrc".source = ./program-config-files/gtkrc-2.0;
-    "gtk-3.0/settings.ini".source = ./program-config-files/gtk-3-4-settings.ini;
-    "gtk-4.0/settings.ini".source = ./program-config-files/gtk-3-4-settings.ini;
-  };
+  system.userActivationScripts.mkDesktopSettingsSymlinks.text =
+    let
+      home = "/home/vili/";
+      paths = [
+        rec {
+          dir = "${home}.config/pcmanfm/default/";
+          file = "pcmanfm.conf";
+          full = "${dir}${file}";
+          source = "${./program-config-files/pcmanfm.conf}";
+        }
+        rec {
+          dir = "${home}.config/libfm/";
+          file = "libfm.conf";
+          full = "${dir}${file}";
+          source = "${./program-config-files/libfm.conf}";
+        }
+        rec {
+          dir = "${home}.config/gtk-3.0/";
+          file = "bookmarks";
+          full = "${dir}${file}";
+          source = "${./program-config-files/gtk-bookmarks}";
+        }
+        rec {
+          dir = "${home}";
+          file = ".gtkrc-2.0";
+          full = "${dir}${file}";
+          source = "${./program-config-files/gtkrc-2.0}";
+        }
+        rec {
+          dir = "${home}.config/gtk-3.0/";
+          file = "settings.ini";
+          full = "${dir}${file}";
+          source = "${./program-config-files/gtk-3-4-settings.ini}";
+        }
+        rec {
+          dir = "${home}.config/gtk-4.0/";
+          file = "settings.ini";
+          full = "${dir}${file}";
+          source = "${./program-config-files/gtk-3-4-settings.ini}";
+        }
+      ];
+    in
+    toString (
+      map (path: ''
+        mkdir -p ${path.dir}
+        if test -e ${path.full} -a ! -L ${path.full}; then
+          mv -f ${path.full} ${path.full}.old
+        fi
+        ln -sf ${path.source} ${path.full}
+      '') paths
+    );
 }
