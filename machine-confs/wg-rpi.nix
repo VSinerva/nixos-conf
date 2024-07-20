@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ config, pkgs, ... }:
 let
   SSID = "ENTER_SSID";
   SSIDpassword = "ENTER_PASSWORD";
