@@ -96,6 +96,7 @@ in
       };
     };
   };
+
   xdg.mime.defaultApplications = {
     "application/pdf" = "org.gnome.Evince.desktop";
     "text/plain" = "org.xfce.mousepad.desktop";
@@ -104,6 +105,13 @@ in
 
   qt = {
     enable = true;
-    style = "breeze";
+    style = "adwaita-dark";
+    platformTheme = "gnome";
+  };
+
+  environment.etc = {
+    "gtk-2.0/gtkrc".source = ./program-config-files/gtkrc-2.0;
+    "gtk-3.0/settings.ini".source = ./program-config-files/gtk-3-4-settings.ini;
+    "gtk-4.0/settings.ini".source = ./program-config-files/gtk-3-4-settings.ini;
   };
 }
