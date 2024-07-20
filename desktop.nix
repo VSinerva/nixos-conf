@@ -22,6 +22,8 @@ in
     }
   ];
 
+  imports = [ ./program-config-files/firefox.nix ];
+
   environment.systemPackages = with pkgs; [
     i3status
     rofi
@@ -79,23 +81,6 @@ in
   hardware.pulseaudio.enable = true;
 
   security.polkit.enable = true;
-
-  programs.firefox = {
-    preferences = {
-      "media.ffmpeg.vaapi.enabled" = true;
-    };
-    enable = true;
-    preferencesStatus = "locked";
-    policies = {
-      ExtensionSettings = {
-        "*".installation_mode = "blocked";
-        "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
-          installation_mode = "force_installed";
-        };
-      };
-    };
-  };
 
   xdg.mime.defaultApplications = {
     "application/pdf" = "org.gnome.Evince.desktop";
