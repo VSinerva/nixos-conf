@@ -1,6 +1,13 @@
 # Syncthing instance
 { config, pkgs, ... }:
 {
+  assertions = [
+    {
+      assertion = config.users.users ? "vili";
+      message = "User 'vili' needed for syncthing!";
+    }
+  ];
+
   services.syncthing = {
     enable = true;
     user = "vili";
