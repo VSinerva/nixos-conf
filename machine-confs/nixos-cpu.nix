@@ -4,7 +4,6 @@
 
   imports = [
     ../base.nix
-    ../development.nix
     ../users/vili.nix
     ../services/syncthing.nix
   ];
