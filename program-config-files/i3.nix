@@ -69,7 +69,8 @@ let
 in
 pkgs.writeText "i3-conf" ''
   # Set mod key (Mod1=<Alt>, Mod4=<Super>)
-  set $mod Mod4
+  set $mod Mod1
+  set $secondary Mod4
 
 
 
@@ -179,16 +180,16 @@ pkgs.writeText "i3-conf" ''
   bindsym $mod+8 workspace 8
   bindsym $mod+9 workspace 9
   bindsym $mod+0 workspace 10
-  bindsym $mod+Mod1+1 workspace 11
-  bindsym $mod+Mod1+2 workspace 12
-  bindsym $mod+Mod1+3 workspace 13
-  bindsym $mod+Mod1+4 workspace 14
-  bindsym $mod+Mod1+5 workspace 15
-  bindsym $mod+Mod1+6 workspace 16
-  bindsym $mod+Mod1+7 workspace 17
-  bindsym $mod+Mod1+8 workspace 18
-  bindsym $mod+Mod1+9 workspace 19
-  bindsym $mod+Mod1+0 workspace 20
+  bindsym $mod+$secondary+1 workspace 11
+  bindsym $mod+$secondary+2 workspace 12
+  bindsym $mod+$secondary+3 workspace 13
+  bindsym $mod+$secondary+4 workspace 14
+  bindsym $mod+$secondary+5 workspace 15
+  bindsym $mod+$secondary+6 workspace 16
+  bindsym $mod+$secondary+7 workspace 17
+  bindsym $mod+$secondary+8 workspace 18
+  bindsym $mod+$secondary+9 workspace 19
+  bindsym $mod+$secondary+0 workspace 20
 
   # Move focused container to workspace
   bindsym $mod+Ctrl+1 move container to workspace 1
@@ -201,16 +202,16 @@ pkgs.writeText "i3-conf" ''
   bindsym $mod+Ctrl+8 move container to workspace 8
   bindsym $mod+Ctrl+9 move container to workspace 9
   bindsym $mod+Ctrl+0 move container to workspace 10
-  bindsym $mod+Mod1+Ctrl+1 move container to workspace 11
-  bindsym $mod+Mod1+Ctrl+2 move container to workspace 12
-  bindsym $mod+Mod1+Ctrl+3 move container to workspace 13
-  bindsym $mod+Mod1+Ctrl+4 move container to workspace 14
-  bindsym $mod+Mod1+Ctrl+5 move container to workspace 15
-  bindsym $mod+Mod1+Ctrl+6 move container to workspace 16
-  bindsym $mod+Mod1+Ctrl+7 move container to workspace 17
-  bindsym $mod+Mod1+Ctrl+8 move container to workspace 18
-  bindsym $mod+Mod1+Ctrl+9 move container to workspace 19
-  bindsym $mod+Mod1+Ctrl+0 move container to workspace 20
+  bindsym $mod+$secondary+Ctrl+1 move container to workspace 11
+  bindsym $mod+$secondary+Ctrl+2 move container to workspace 12
+  bindsym $mod+$secondary+Ctrl+3 move container to workspace 13
+  bindsym $mod+$secondary+Ctrl+4 move container to workspace 14
+  bindsym $mod+$secondary+Ctrl+5 move container to workspace 15
+  bindsym $mod+$secondary+Ctrl+6 move container to workspace 16
+  bindsym $mod+$secondary+Ctrl+7 move container to workspace 17
+  bindsym $mod+$secondary+Ctrl+8 move container to workspace 18
+  bindsym $mod+$secondary+Ctrl+9 move container to workspace 19
+  bindsym $mod+$secondary+Ctrl+0 move container to workspace 20
 
   # Move to workspace with focused container
   bindsym $mod+Shift+1 move container to workspace 1; workspace 1
@@ -223,14 +224,14 @@ pkgs.writeText "i3-conf" ''
   bindsym $mod+Shift+8 move container to workspace 8; workspace 8
   bindsym $mod+Shift+9 move container to workspace 9; workspace 9
   bindsym $mod+Shift+0 move container to workspace 10; workspace 10
-  bindsym $mod+Mod1+Shift+1 move container to workspace 11; workspace 11
-  bindsym $mod+Mod1+Shift+2 move container to workspace 12; workspace 12
-  bindsym $mod+Mod1+Shift+3 move container to workspace 13; workspace 13
-  bindsym $mod+Mod1+Shift+4 move container to workspace 14; workspace 14
-  bindsym $mod+Mod1+Shift+5 move container to workspace 15; workspace 15
-  bindsym $mod+Mod1+Shift+6 move container to workspace 16; workspace 16
-  bindsym $mod+Mod1+Shift+7 move container to workspace 17; workspace 17
-  bindsym $mod+Mod1+Shift+8 move container to workspace 18; workspace 18
-  bindsym $mod+Mod1+Shift+9 move container to workspace 19; workspace 19
-  bindsym $mod+Mod1+Shift+0 move container to workspace 20; workspace 20
+  bindsym $mod+$secondary+Shift+1 move container to workspace 11; workspace 11
+  bindsym $mod+$secondary+Shift+2 move container to workspace 12; workspace 12
+  bindsym $mod+$secondary+Shift+3 move container to workspace 13; workspace 13
+  bindsym $mod+$secondary+Shift+4 move container to workspace 14; workspace 14
+  bindsym $mod+$secondary+Shift+5 move container to workspace 15; workspace 15
+  bindsym $mod+$secondary+Shift+6 move container to workspace 16; workspace 16
+  bindsym $mod+$secondary+Shift+7 move container to workspace 17; workspace 17
+  bindsym $mod+$secondary+Shift+8 move container to workspace 18; workspace 18
+  bindsym $mod+$secondary+Shift+9 move container to workspace 19; workspace 19
+  bindsym $mod+$secondary+Shift+0 move container to workspace 20; workspace 20
 ''
