@@ -53,6 +53,9 @@
     max-jobs = 4;
   };
 
+  services.openssh.enable = pkgs.lib.mkForce false;
+  services.fail2ban.enable = pkgs.lib.mkForce false;
+
   imports = [
     ../base.nix
     ../users/vili.nix
