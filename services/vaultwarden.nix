@@ -25,11 +25,9 @@
         SIGNUPS_VERIFY_RESEND_TIME = 3600;
         SIGNUPS_VERIFY_RESEND_LIMIT = 5;
         SMTP_HOST = "smtp.gmail.com";
-        SMTP_FROM = "vmsskv12@gmail.com";
         SMTP_FROM_NAME = "Vaultwarden";
         SMTP_SECURITY = "force_tls";
         SMTP_PRT = 587;
-        SMTP_USERNAME = "vmsskv12@gmail.com";
         SMTP_AUTH_MECHANISM = "Login";
       };
     };
