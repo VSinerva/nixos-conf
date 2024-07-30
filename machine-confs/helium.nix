@@ -10,7 +10,7 @@
 
     wg-quick.interfaces = {
       wg0 = {
-        autostart = false;
+        autostart = true;
         address = [ "172.16.0.2/24" ];
         dns = [
           "192.168.0.1"
