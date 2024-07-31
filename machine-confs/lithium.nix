@@ -10,4 +10,21 @@
     ../services/redshift.nix
     ../hardware-specific/usb-automount.nix
   ];
+
+  boot = {
+    #resumeDevice = "/dev/mapper/luks-f6e1979b-0dee-4ee9-8170-10490019854b";
+    #kernelParams = [ "resume_offset=44537856" ];
+
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+  };
+
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024;
+    }
+  ];
 }
