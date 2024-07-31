@@ -12,7 +12,13 @@ in
 {
   programs.firefox = {
     enable = true;
-    preferencesStatus = "locked";
+
+    # AutoConfig used for preferences not supported via policies
+    autoConfig = ''
+      lockPref("full-screen-api.warning.timeout", 500)
+      lockPref("privacy.fingerprintingProtection", true)
+      lockPref("privacy.donottrackheader.enabled", true)
+    '';
 
     # ---- POLICIES ----
     # Check about:policies#documentation for options.
@@ -34,6 +40,7 @@ in
       DisableFirefoxStudies = true;
       DisableFormHistory = true;
       DisablePocket = true;
+      DisableSecurityBypass = false;
       DisableTelemetry = true;
       DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
       DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
@@ -140,22 +147,26 @@ in
           Value = "strict";
           Status = "locked";
         };
+        "browser.safebrowsing.downloads.enabled" = lock-true;
+        "browser.safebrowsing.downloads.remote.block_potentially_unwanted" = lock-true;
+        "browser.safebrowsing.downloads.remote.block_uncommon" = lock-true;
+        "browser.safebrowsing.malware.enabled" = lock-true;
+        "browser.safebrowsing.phishing.enabled" = lock-true;
+        "browser.crashReports.unsubmittedCheck.autoSubmit2" = lock-false;
         "browser.topsites.contile.enabled" = lock-false;
         "browser.translations.automaticallyPopup" = lock-false;
         "media.ffmpeg.vaapi.enabled" = lock-true;
-        "full-screen-api.warning.timeout" = {
-          Value = 500;
+        "privacy.globalprivacycontrol.enabled" = lock-true;
+        "xpinstall.whitelist.required" = lock-true;
+        "network.trr.mode" = {
+          Value = 0;
           Status = "locked";
         };
-        "privacy.globalprivacycontrol.enabled" = lock-true;
+        "security.OCSP.enabled" = {
+          Value = 1;
+          Status = "locked";
+        };
       };
-    };
-
-    preferences = {
-      "privacy.donottrackheader.enabled" = true;
-      "network.trr.mode" = 2;
-      "network.trr.custom_uri" = "192.168.0.1";
-      "network.trr.uri" = "192.168.0.1";
     };
   };
 }
