@@ -29,6 +29,8 @@ in
         };
       };
 
+      AutofillAddressEnabled = false;
+      AutofillCreditCardEnabled = false;
       DisableFirefoxStudies = true;
       DisableFormHistory = true;
       DisablePocket = true;
@@ -39,6 +41,7 @@ in
         Enabled = true;
         Locked = true;
         ProviderURL = pkgs.lib.mkDefault "192.168.0.1";
+        Fallback = true;
       };
       DontCheckDefaultBrowser = true;
       DownloadDirectory = "\${home}/Downloads";
@@ -115,7 +118,7 @@ in
       };
       PopupBlocking = {
         Allow = [ ];
-        Default = false;
+        Default = true;
         Locked = true;
       };
       PostQuantumKeyAgreementEnabled = true;
@@ -150,6 +153,8 @@ in
           Value = 500;
           Status = "locked";
         };
+        "privacy.donottrackheader.enabled" = locked-true;
+        "privacy.globalprivacycontrol.enabled" = locked-true;
       };
     };
   };
