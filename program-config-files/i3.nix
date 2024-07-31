@@ -97,6 +97,9 @@ pkgs.writeText "i3-conf" ''
           ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
           tray_output primary
 
+          bindsym button4 nop
+          bindsym button5 nop
+
           colors {
                   background #0f212f
                   statusline #d0d0d0
