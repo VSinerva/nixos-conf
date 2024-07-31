@@ -153,8 +153,8 @@ in
           Value = 500;
           Status = "locked";
         };
-        "privacy.donottrackheader.enabled" = locked-true;
-        "privacy.globalprivacycontrol.enabled" = locked-true;
+        "privacy.donottrackheader.enabled" = lock-true;
+        "privacy.globalprivacycontrol.enabled" = lock-true;
       };
     };
   };
