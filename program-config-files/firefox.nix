@@ -37,12 +37,6 @@ in
       DisableTelemetry = true;
       DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
       DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
-      DNSOverHTTPS = {
-        Enabled = true;
-        Locked = true;
-        ProviderURL = pkgs.lib.mkDefault "192.168.0.1";
-        Fallback = true;
-      };
       DontCheckDefaultBrowser = true;
       DownloadDirectory = "\${home}/Downloads";
       EnableTrackingProtection = {
@@ -153,9 +147,15 @@ in
           Value = 500;
           Status = "locked";
         };
-        "privacy.donottrackheader.enabled" = lock-true;
         "privacy.globalprivacycontrol.enabled" = lock-true;
       };
+    };
+
+    preferences = {
+      "privacy.donottrackheader.enabled" = true;
+      "network.trr.mode" = 2;
+      "network.trr.custom_uri" = "192.168.0.1";
+      "network.trr.uri" = "192.168.0.1";
     };
   };
 }
