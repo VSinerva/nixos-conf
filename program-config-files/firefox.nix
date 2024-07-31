@@ -155,6 +155,7 @@ in
         "browser.crashReports.unsubmittedCheck.autoSubmit2" = lock-false;
         "browser.topsites.contile.enabled" = lock-false;
         "browser.translations.automaticallyPopup" = lock-false;
+        "dom.private-attribution.submission.enabled" = lock-false;
         "media.ffmpeg.vaapi.enabled" = lock-true;
         "privacy.globalprivacycontrol.enabled" = lock-true;
         "xpinstall.whitelist.required" = lock-true;
