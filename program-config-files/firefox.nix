@@ -33,6 +33,10 @@ in
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
           installation_mode = "force_installed";
         };
+        "jsr@javascriptrestrictor" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/javascript-restrictor/latest.xpi";
+          installation_mode = "force_installed";
+        };
       };
 
       AutofillAddressEnabled = false;
