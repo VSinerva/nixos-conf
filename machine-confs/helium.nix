@@ -47,6 +47,11 @@
       };
     };
   };
+  # Dirty hack to fix autostart failing due to DNS lookups
+  systemd.services."wg-quick-wg0".serviceConfig = {
+    Restart = "on-failure";
+    RestartSec = "1s";
+  };
 
   nix.settings = {
     cores = 3;
