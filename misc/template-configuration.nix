@@ -22,8 +22,6 @@ let
   };
 in
 {
-  nix.settings.experimental-features = "verified-fetches";
-
   imports = [
     ./hardware-configuration.nix
     "${repo}/machine-confs/${host}.nix"

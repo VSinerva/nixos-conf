@@ -128,6 +128,7 @@
     settings = {
       auto-optimise-store = true;
       tarball-ttl = 0;
+      experimental-features = "verified-fetches";
     };
     gc = {
       automatic = true;
