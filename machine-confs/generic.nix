@@ -4,7 +4,16 @@
 
   imports = [ ../base.nix ];
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  #Many installs will need this, and it won't hurt either way
+  services.qemuGuest.enable = true;
+
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 8 * 1024;
+    }
+  ];
 }
