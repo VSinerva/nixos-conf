@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
-  host = "???";
-  stateVersion = "???";
+  host = "generic";
+  stateVersion = "24.05";
 
   repo = builtins.fetchGit {
     url = "https://github.com/VSinerva/nixos-conf.git";
