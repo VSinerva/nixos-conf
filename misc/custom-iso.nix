@@ -21,7 +21,7 @@ let
       mv /mnt/etc/nixos/configuration.nix configuration.nix.old
       curl https://raw.githubusercontent.com/VSinerva/nixos-conf/main/misc/template-configuration.nix -o /mnt/etc/nixos/configuration.nix
 
-      nixos-install --no-root-password
+      nixos-install
     fi
   '';
 in
@@ -37,4 +37,7 @@ in
 
   #Many installs will need this, and it won't hurt either way
   services.qemuGuest.enable = true;
+
+  #Prevent user from being locked out of the system before switching to proper config
+  users.mutableUsers = pkgs.lib.mkForce true;
 }
