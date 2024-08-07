@@ -17,23 +17,27 @@ let
       mkdir /mnt/boot
       mount -o umask=077 /dev/disk/by-label/BOOT /mnt/boot
 
-      nixos-generate-config --root /mnt
-      mv /mnt/etc/nixos/configuration.nix configuration.nix.old
-      curl https://raw.githubusercontent.com/VSinerva/nixos-conf/main/misc/template-configuration.nix -o /mnt/etc/nixos/configuration.nix
+      fetch-config
 
       nixos-install
     fi
   '';
+  fetch-config = pkgs.writeScriptBin "fetch-config" ''
+    nixos-generate-config --root /mnt
+    mv /mnt/etc/nixos/configuration.nix configuration.nix.old
+    curl https://raw.githubusercontent.com/VSinerva/nixos-conf/main/misc/template-configuration.nix -o /mnt/etc/nixos/configuration.nix
+  '';
 in
 {
   imports = [
-    <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
     <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
     ../base.nix
   ];
 
-  networking.networkmanager.enable = pkgs.lib.mkForce false;
-  environment.systemPackages = [ partition-and-install ];
+  environment.systemPackages = [
+    partition-and-install
+    fetch-config
+  ];
 
   #Many installs will need this, and it won't hurt either way
   services.qemuGuest.enable = true;
