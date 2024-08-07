@@ -46,7 +46,7 @@ in
       DisablePocket = true;
       DisableSecurityBypass = false;
       DisableTelemetry = true;
-      DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
+      DisplayBookmarksToolbar = "always"; # alternatives: "always" or "newtab"
       DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
       DontCheckDefaultBrowser = true;
       DownloadDirectory = "\${home}/Downloads";
