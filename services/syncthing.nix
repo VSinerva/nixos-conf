@@ -35,6 +35,7 @@
             devices = [
               "helium"
               "nixos-cpu"
+              "phone"
             ];
             versioning = {
               type = "trashcan";
@@ -42,21 +43,21 @@
             };
             fsWatcherDelayS = 1;
           };
-        in
-        {
-          "~/Documents" = default // {
+          default-no-phone = default // {
             devices = [
               "helium"
               "nixos-cpu"
-              "phone"
             ];
           };
-          "~/Downloads" = default;
-          "~/Music" = default;
+        in
+        {
+          "~/Documents" = default;
+          "~/Downloads" = default-no-phone;
+          "~/Music" = default-no-phone;
           "~/Pictures" = default;
           "~/Projects" = default;
           "~/School" = default;
-          "~/Videos" = default;
+          "~/Videos" = default-no-phone;
           "~/Zotero" = default;
         };
 
