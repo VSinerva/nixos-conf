@@ -44,6 +44,7 @@ in
     zotero
     flameshot
     speedcrunch
+    brave
   ];
 
   services = {
