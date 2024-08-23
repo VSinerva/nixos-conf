@@ -75,7 +75,7 @@ in
       HardwareAccelerations = true;
       Homepage = {
         Locked = true;
-        URL = "https://www.google.com/";
+        URL = "https://www.duckduckgo.com/";
         StartPage = "previous-session";
       };
       HttpsOnlyMode = "force_enabled";
