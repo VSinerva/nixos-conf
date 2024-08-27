@@ -116,6 +116,15 @@
   };
   time.timeZone = "Europe/Helsinki";
 
+  #################### Memory management ####################
+  zramSwap.enable = true;
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024;
+    }
+  ];
+
   #################### Housekeeping ####################
   system.autoUpgrade = {
     enable = true;
