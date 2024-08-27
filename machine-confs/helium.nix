@@ -53,11 +53,6 @@
     RestartSec = "1s";
   };
 
-  nix.settings = {
-    cores = 3;
-    max-jobs = 4;
-  };
-
   services.openssh.enable = pkgs.lib.mkForce false;
   services.fail2ban.enable = pkgs.lib.mkForce false;
 
@@ -88,11 +83,4 @@
       efi.canTouchEfiVariables = true;
     };
   };
-
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 16 * 1024;
-    }
-  ];
 }

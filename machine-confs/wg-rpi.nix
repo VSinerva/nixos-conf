@@ -100,7 +100,7 @@ in
     max-jobs = 2;
   };
 
-  swapDevices = [
+  swapDevices = pkgs.lib.mkForce [
     {
       device = "/var/lib/swapfile";
       size = 8 * 1024;
