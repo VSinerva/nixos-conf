@@ -74,6 +74,13 @@
     ${pkgs.xorg.xrandr}/bin/xrandr --output DisplayPort-0 --auto --pos 0x0 --primary --output eDP --auto --pos 3840x360
   '';
 
+  swapDevices = pkgs.lib.mkForce [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024;
+    }
+  ];
+
   boot = {
     resumeDevice = "/dev/mapper/luks-f6e1979b-0dee-4ee9-8170-10490019854b";
     kernelParams = [ "resume_offset=44537856" ];
