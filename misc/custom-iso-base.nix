@@ -21,13 +21,14 @@ let
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
-      cryptsetup luksFormat $1
-      cryptsetup open $1 nixos
-
-      echo "Encrypted device accessible via /dev/mapper/nixos"
+      cryptsetup luksFormat $1$3
+      if cryptsetup open $1$3 nixos
+      then
+        echo "Encrypted device accessible via /dev/mapper/nixos"
+      fi
     fi
   '';
-  make-filesystems = pkgs.writeScriptBin "make-filesystems" ''
+  create-filesystems = pkgs.writeScriptBin "create-filesystems" ''
     if [[ $# -ne 2 ]]
     then
       echo "Usage: make-filesystems <BOOT partition> <root partition>"
@@ -57,7 +58,7 @@ in
   environment.systemPackages = [
     pkgs.cryptsetup
     create-partitions
-    make-filesystems
+    create-filesystems
     prep-install
   ];
 
