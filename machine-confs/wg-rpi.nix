@@ -100,13 +100,6 @@ in
     max-jobs = 2;
   };
 
-  swapDevices = pkgs.lib.mkForce [
-    {
-      device = "/var/lib/swapfile";
-      size = 8 * 1024;
-    }
-  ];
-
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
     initrd.availableKernelModules = [
