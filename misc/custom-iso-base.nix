@@ -31,7 +31,7 @@ let
   create-filesystems = pkgs.writeScriptBin "create-filesystems" ''
     if [[ $# -ne 2 ]]
     then
-      echo "Usage: make-filesystems <BOOT partition> <root partition>"
+      echo "Usage: create-filesystems <BOOT partition> <root partition>"
       exit
     fi
 
