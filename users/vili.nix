@@ -13,6 +13,7 @@
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBbGREoK1uVny1s8FK3KZ74Wmaf0VtifhqPyK69C/Gez vili@helium"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPivDyDYrCRBHRl9zup1Gj5vtyesOW/XKG/68kA8HLaW vili@lithium"
     ];
     hashedPasswordFile = "/home/vili/.hashedPasswordFile";
   };
