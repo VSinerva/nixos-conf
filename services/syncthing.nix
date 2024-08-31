@@ -19,11 +19,11 @@
       devices = {
         "helium" = {
           id = "2MRUBSY-NHXYMAW-SY22RHP-CNNMHKR-DPDKMM4-2XV5F6M-6KSNLQI-DD4EOAM";
-          addresses = [ "tcp://helium.vsinerva.fi:22000" ];
+          addresses = [ "tcp://172.16.0.2:22000" ];
         };
         "lithium" = {
           id = "S4ZORDV-QBY7QC7-FQHADMZ-NQSKJUA-7B7LQNS-CWJLSMG-JPMN7YJ-OVRDZQA";
-          addresses = [ "tcp://lithium.vsinerva.fi:22000" ];
+          addresses = [ "tcp://172.16.0.4:22000" ];
         };
         "nixos-cpu" = {
           id = "ZX35ARB-3ULEUV3-NNUEREF-DEDWOJU-GE7A4PP-T7O43NI-SU564OD-E26HHA4";
