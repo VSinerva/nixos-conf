@@ -68,5 +68,5 @@
     };
   };
 
-  logind.lidSwitch = if config.boot.resumeDevice != "" then "hibernate" else "suspend";
+  services.logind.lidSwitch = if config.boot.resumeDevice != "" then "hibernate" else "suspend";
 }
