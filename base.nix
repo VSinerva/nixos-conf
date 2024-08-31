@@ -131,6 +131,11 @@
     enable = true;
     dates = "04:00";
     randomizedDelaySec = "30min";
+    allowReboot = true;
+    rebootWindow = {
+      lower = "03:30";
+      upper = "05:00";
+    };
   };
 
   nix = {
