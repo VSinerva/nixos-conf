@@ -33,8 +33,6 @@
   services.openssh.enable = pkgs.lib.mkForce false;
   services.fail2ban.enable = pkgs.lib.mkForce false;
 
-  services.xserver.xkb.layout = pkgs.lib.mkForce "fi";
-
   imports = [
     ../base.nix
     ../users/vili.nix
