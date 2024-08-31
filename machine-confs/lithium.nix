@@ -6,7 +6,7 @@
     firewall.allowedUDPPorts = [ 51820 ];
 
     wg-quick.interfaces.wg0 = {
-      autostart = false;
+      autostart = true;
       address = [ "172.16.0.4/24" ];
       dns = [
         "192.168.0.1"
