@@ -38,7 +38,7 @@
     ../users/vili.nix
     ../desktop.nix
     ../development.nix
-    #    ../services/syncthing.nix
+    ../services/syncthing.nix
     ../services/redshift.nix
     ../hardware-specific/keychron-q11.nix
     ../hardware-specific/trackball.nix
