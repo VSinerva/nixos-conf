@@ -117,6 +117,8 @@
   };
   time.timeZone = "Europe/Helsinki";
 
+  boot.loader.timeout = 0;
+
   #################### Memory management ####################
   zramSwap.enable = true;
   swapDevices = [
