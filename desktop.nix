@@ -22,10 +22,7 @@ in
     }
   ];
 
-  imports = [
-    ./program-config-files/firefox.nix
-    ./program-config-files/boot-animation.nix
-  ];
+  imports = [ ./program-config-files/firefox.nix ];
 
   environment.systemPackages = with pkgs; [
     i3status
