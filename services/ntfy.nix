@@ -13,7 +13,6 @@
       listen-https = ":443";
       key-file = "/var/lib/ntfy/privkey.pem";
       cert-file = "/var/lib/ntfy/fullchain.pem";
-      cache-file = "/var/lib/ntfy/notif-cache.sqlite";
     };
   };
 }
