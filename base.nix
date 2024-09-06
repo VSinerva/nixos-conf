@@ -1,7 +1,6 @@
-#Basic system config
 { config, pkgs, ... }:
 {
-  #################### Packages ####################
+  ######################################## Packages ###############################################
   environment.systemPackages = with pkgs; [
     alacritty
     tmux
@@ -12,7 +11,7 @@
     btop
   ];
 
-  #################### ZSH configuration ####################
+  ######################################## ZSH configuration ######################################
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
   programs.zsh = {
@@ -40,7 +39,7 @@
     '';
   };
 
-  #################### tmux configuration ####################
+  ######################################## tmux configuration #####################################
   programs.tmux.enable = true;
   programs.tmux.extraConfig = ''
     unbind C-b
@@ -72,7 +71,7 @@
     set -s escape-time 0
   '';
 
-  #################### SSH configuration ####################
+  ######################################## SSH and fail2ban configuration #########################
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
@@ -82,7 +81,6 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPivDyDYrCRBHRl9zup1Gj5vtyesOW/XKG/68kA8HLaW vili@lithium"
   ];
 
-  #################### Basic fail2ban configuration ####################
   services.fail2ban = {
     enable = true;
     bantime = "1h";
@@ -99,13 +97,7 @@
     };
   };
 
-  #################### BASE ####################
-  nixpkgs.config.allowUnfree = true;
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
-
-  users.mutableUsers = false; # Force all user management to happen throught nix-files
-
-  # Select internationalisation properties.
+  ######################################## Localization ###########################################
   i18n.defaultLocale = "en_US.UTF-8";
   services.xserver.xkb = {
     layout = "us,";
@@ -117,14 +109,7 @@
   };
   time.timeZone = "Europe/Helsinki";
 
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-    timeout = 0;
-  };
-  services.logind.lidSwitch = if config.boot.resumeDevice != "" then "hibernate" else "suspend";
-
-  #################### Memory management ####################
+  ######################################## Memory management ######################################
   zramSwap.enable = true;
   swapDevices = [
     {
@@ -133,7 +118,7 @@
     }
   ];
 
-  #################### Housekeeping ####################
+  ######################################## Housekeeping ###########################################
   system.autoUpgrade = {
     enable = true;
     dates = "04:00";
@@ -159,4 +144,18 @@
       randomizedDelaySec = "30min";
     };
   };
+
+  ######################################## Misc. ##################################################
+  nixpkgs.config.allowUnfree = true;
+
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+
+  users.mutableUsers = false; # Force all user management to happen throught nix-files
+
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+    timeout = 0;
+  };
+  services.logind.lidSwitch = if config.boot.resumeDevice != "" then "hibernate" else "suspend";
 }
