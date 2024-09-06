@@ -40,10 +40,16 @@ in
     evince
     brightnessctl
     networkmanagerapplet
-    zotero
     flameshot
     speedcrunch
     brave
+
+    zotero
+    kile
+    texliveFull
+    imagemagick
+    ghostscript
+    kdePackages.okular
   ];
 
   services = {
