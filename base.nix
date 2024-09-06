@@ -117,7 +117,12 @@
   };
   time.timeZone = "Europe/Helsinki";
 
-  boot.loader.timeout = 0;
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+    timeout = 0;
+  };
+  services.logind.lidSwitch = if config.boot.resumeDevice != "" then "hibernate" else "suspend";
 
   #################### Memory management ####################
   zramSwap.enable = true;

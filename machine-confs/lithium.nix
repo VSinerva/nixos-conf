@@ -61,12 +61,5 @@
 
     resumeDevice = "/dev/mapper/nixos";
     kernelParams = [ "resume_offset=39292928" ];
-
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
   };
-
-  services.logind.lidSwitch = if config.boot.resumeDevice != "" then "hibernate" else "suspend";
 }

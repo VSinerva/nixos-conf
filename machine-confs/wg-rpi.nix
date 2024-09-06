@@ -108,6 +108,8 @@ in
       "usb_storage"
     ];
     loader = {
+      systemd-boot.enable = pkgs.lib.mkForce false;
+      efi.canTouchEfiVariables = pkgs.lib.mkForce false;
       grub.enable = false;
       generic-extlinux-compatible.enable = true;
     };
