@@ -145,6 +145,37 @@
     };
   };
 
+  # Define systemd template unit for reporting status via ntfy
+  systemd.services =
+    let
+      services = [
+        "nixos-upgrade"
+        "nix-gc"
+        "nix-optimize"
+      ];
+    in
+    {
+      "notify-push@" = {
+        environment.SERVICE_ID = "%i";
+        path = [
+          "/run/wrappers"
+          "/run/current-system/sw"
+        ];
+        script = ''
+          curl \
+            -H "Title:$(hostname) $SERVICE_ID $(systemctl show --property=Result $SERVICE_ID)" \
+            -d "$(journalctl --output cat -n 10 -u $SERVICE_ID)" \
+            https://ntfy.vsinerva.fi/service-notifs
+        '';
+      };
+
+      # Merge attributes for all monitored services
+    }
+    // (pkgs.lib.attrsets.genAttrs services (name: {
+      onFailure = pkgs.lib.mkBefore [ "notify-push@%i.service" ];
+      onSuccess = pkgs.lib.mkBefore [ "notify-push@%i.service" ];
+    }));
+
   ######################################## Misc. ##################################################
   nixpkgs.config.allowUnfree = true;
 
