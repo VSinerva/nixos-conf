@@ -1,4 +1,3 @@
-#Config for graphical desktop
 { config, pkgs, ... }:
 let
   Xresources = "${pkgs.writeText "Xresources" ''

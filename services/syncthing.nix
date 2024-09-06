@@ -1,4 +1,3 @@
-# Syncthing instance
 { config, pkgs, ... }:
 {
   assertions = [

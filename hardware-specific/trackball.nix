@@ -1,4 +1,3 @@
-# Config for my Logitech trackball
 { config, pkgs, ... }:
 {
   assertions = [

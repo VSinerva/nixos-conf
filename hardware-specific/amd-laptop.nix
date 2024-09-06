@@ -1,4 +1,3 @@
-# Config for laptop with AMD CPU and integrated graphics
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [ zenmonitor ];

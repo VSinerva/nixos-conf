@@ -1,4 +1,3 @@
-# Vaultwarden instance
 { config, pkgs, ... }:
 {
   networking.firewall.allowedTCPPorts = [

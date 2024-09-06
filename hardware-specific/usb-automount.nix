@@ -1,4 +1,3 @@
-# Config for automounting USB devices
 { config, pkgs, ... }:
 {
   services = {
