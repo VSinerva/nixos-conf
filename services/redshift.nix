@@ -1,4 +1,3 @@
-# Redshift bluelight reducer
 { config, pkgs, ... }:
 {
   assertions = [

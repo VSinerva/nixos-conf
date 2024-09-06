@@ -1,4 +1,3 @@
-#Development setup
 { config, pkgs, ... }:
 {
   #################### Git configuration ####################

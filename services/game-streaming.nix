@@ -1,4 +1,3 @@
-# Game streaming software (and possibly services in future)
 { config, pkgs, ... }:
 {
   assertions = [

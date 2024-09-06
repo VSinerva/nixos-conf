@@ -1,4 +1,3 @@
-#Config for main user 'vili'
 { config, pkgs, ... }:
 {
   users.users.vili = {
