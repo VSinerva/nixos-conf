@@ -91,6 +91,7 @@ in
   xdg.mime.defaultApplications = {
     "application/pdf" = "org.gnome.Evince.desktop";
     "text/plain" = "org.xfce.mousepad.desktop";
+    "text/x-tex" = "org.kde.kile.desktop";
     "inode/directory" = "pcmanfm.description";
   };
 
