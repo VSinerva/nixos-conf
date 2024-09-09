@@ -74,6 +74,8 @@
     ${pkgs.xorg.xrandr}/bin/xrandr --output DisplayPort-0 --auto --pos 0x0 --primary --output eDP --auto --pos 3840x360
   '';
 
+  system.autoUpgrade.allowReboot = pkgs.lib.mkForce false;
+
   swapDevices = pkgs.lib.mkForce [
     {
       device = "/var/lib/swapfile";
