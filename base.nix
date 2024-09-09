@@ -131,7 +131,7 @@
   };
 
   nix = {
-    package = pkgs.nixVersions.latest;
+    package = pkgs.nixVersions.nix_2_20;
     settings = {
       auto-optimise-store = true;
       tarball-ttl = 0;
@@ -144,6 +144,9 @@
       randomizedDelaySec = "30min";
     };
   };
+  nixpkgs.overlays = [
+    (final: prev: { nixos-option = prev.nixos-option.override { nix = pkgs.nixVersions.nix_2_20; }; })
+  ];
 
   # Define systemd template unit for reporting status via ntfy
   systemd.services =
