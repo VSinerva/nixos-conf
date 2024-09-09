@@ -45,6 +45,8 @@
     ../hardware-specific/usb-automount.nix
   ];
 
+  system.autoUpgrade.allowReboot = pkgs.lib.mkForce false;
+
   swapDevices = pkgs.lib.mkForce [
     {
       device = "/var/lib/swapfile";
