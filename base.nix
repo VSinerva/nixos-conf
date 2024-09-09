@@ -144,9 +144,6 @@
       randomizedDelaySec = "30min";
     };
   };
-  nixpkgs.overlays = [
-    (final: prev: { nixos-option = prev.nixos-option.override { nix = pkgs.nixVersions.nix_2_20; }; })
-  ];
 
   # Define systemd template unit for reporting status via ntfy
   systemd.services =
