@@ -164,7 +164,7 @@
         script = ''
           curl \
             -H "Title:$(hostname) $SERVICE_ID $(systemctl show --property=Result $SERVICE_ID)" \
-            -d "$(journalctl --output cat -n 10 -u $SERVICE_ID)" \
+            -d "$(journalctl --output cat -n 2 -u $SERVICE_ID)" \
             https://ntfy.vsinerva.fi/service-notifs
         '';
       };
