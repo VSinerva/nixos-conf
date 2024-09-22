@@ -42,7 +42,7 @@ in
     networkmanagerapplet
     flameshot
     speedcrunch
-    brave
+    #    brave
 
     zotero
     kile
