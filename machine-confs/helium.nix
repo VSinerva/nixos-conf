@@ -3,14 +3,11 @@
   networking = {
     hostName = "helium";
 
-    firewall.allowedUDPPorts = [
-      51820
-      51821
-    ];
+    firewall.allowedUDPPorts = [ 51820 ];
 
     wg-quick.interfaces = {
       wg0 = {
-        autostart = true;
+        autostart = false;
         address = [ "172.16.0.2/24" ];
         dns = [
           "192.168.0.1"
@@ -32,7 +29,7 @@
         address = [ "10.100.0.7/24" ];
         dns = [ "1.1.1.1" ];
         privateKeyFile = "/root/wireguard-keys/privatekey-netflix";
-        listenPort = 51821;
+        listenPort = 51820;
 
         peers = [
           {
@@ -45,10 +42,31 @@
           }
         ];
       };
+      wg2 = {
+        autostart = true;
+        address = [ "fd08:d473:bcca:f0::2/64" ];
+        dns = [
+          "fd08:d473:bcca::1"
+          "vsinerva.fi"
+        ];
+        privateKeyFile = "/root/wireguard-keys/privatekey-home";
+        listenPort = 51820;
+
+        peers = [
+          {
+            publicKey = "f9QoYPxyaxylUcOI9cE9fE9DJoEX4c6GUtr4p+rsd34=";
+            allowedIPs = [
+              "fd08:d473:bcca::/64"
+              "fd08:d473:bcca:f0::/64"
+            ];
+            endpoint = "wg.vsinerva.fi:51821";
+          }
+        ];
+      };
     };
   };
   # Dirty hack to fix autostart failing due to DNS lookups
-  systemd.services."wg-quick-wg0".serviceConfig = {
+  systemd.services."wg-quick-wg2".serviceConfig = {
     Restart = "on-failure";
     RestartSec = "1s";
   };
