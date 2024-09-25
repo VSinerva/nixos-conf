@@ -30,7 +30,7 @@
         };
         "phone" = {
           id = "K6QCK2R-BU65RAC-PHTGLIA-24IHDXE-N6VNBAW-QYREMVD-XWGWKRA-VX2BNAK";
-          addresses = [ "tcp://172.16.0.3:22000" ];
+          addresses = [ "tcp://[fd08:d473:bcca:f0::10]:22000" ];
         };
       };
 
