@@ -7,24 +7,6 @@
 
     wg-quick.interfaces = {
       wg0 = {
-        autostart = false;
-        address = [ "172.16.0.4/24" ];
-        dns = [
-          "192.168.0.1"
-          "vsinerva.fi"
-        ];
-        privateKeyFile = "/root/wireguard-keys/privatekey-home";
-        listenPort = 51820;
-
-        peers = [
-          {
-            publicKey = "f9QoYPxyaxylUcOI9cE9fE9DJoEX4c6GUtr4p+rsd34=";
-            allowedIPs = [ "0.0.0.0/0" ];
-            endpoint = "wg.vsinerva.fi:51820";
-          }
-        ];
-      };
-      wg1 = {
         autostart = true;
         address = [ "fd08:d473:bcca:f0::3/64" ];
         dns = [
@@ -48,7 +30,7 @@
     };
   };
   # Dirty hack to fix autostart failing due to DNS lookups
-  systemd.services."wg-quick-wg1".serviceConfig = {
+  systemd.services."wg-quick-wg0".serviceConfig = {
     Restart = "on-failure";
     RestartSec = "1s";
   };
