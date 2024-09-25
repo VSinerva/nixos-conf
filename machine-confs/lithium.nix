@@ -23,7 +23,7 @@
               "fd08:d473:bcca::/64"
               "fd08:d473:bcca:f0::/64"
             ];
-            endpoint = "wg.vsinerva.fi:51821";
+            endpoint = "wg.vsinerva.fi:51820";
           }
         ];
       };
