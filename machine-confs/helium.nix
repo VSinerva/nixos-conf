@@ -8,7 +8,10 @@
     wg-quick.interfaces = {
       wg0 = {
         autostart = true;
-        address = [ "fd08:d473:bcca:f0::2/64" ];
+        address = [
+          "fd08:d473:bcca:f0::2/64"
+          "2001:14ba:a08c:2df0::2/64"
+        ];
         dns = [
           "fd08:d473:bcca::1"
           "vsinerva.fi"
@@ -22,6 +25,7 @@
             allowedIPs = [
               "fd08:d473:bcca::/64"
               "fd08:d473:bcca:f0::/64"
+              "::/0"
             ];
             endpoint = "wg.vsinerva.fi:51820";
           }
