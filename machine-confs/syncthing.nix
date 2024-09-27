@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  networking.hostName = "nixos-cpu";
+  networking.hostName = "syncthing";
 
   imports = [
     ../base.nix
