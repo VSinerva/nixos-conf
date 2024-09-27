@@ -24,7 +24,7 @@
           id = "S4ZORDV-QBY7QC7-FQHADMZ-NQSKJUA-7B7LQNS-CWJLSMG-JPMN7YJ-OVRDZQA";
           addresses = [ "tcp://[fd08:d473:bcca:f0::3]:22000" ];
         };
-        "nixos-cpu" = {
+        "syncthing" = {
           id = "ZX35ARB-3ULEUV3-NNUEREF-DEDWOJU-GE7A4PP-T7O43NI-SU564OD-E26HHA4";
           addresses = [ "tcp://nixos-cpu.vsinerva.fi:22000" ];
         };
@@ -40,7 +40,7 @@
             devices = [
               "helium"
               "lithium"
-              "nixos-cpu"
+              "syncthing"
               "phone"
             ];
             versioning = {
@@ -53,7 +53,7 @@
             devices = [
               "helium"
               "lithium"
-              "nixos-cpu"
+              "syncthing"
             ];
           };
         in
