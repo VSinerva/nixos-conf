@@ -3,8 +3,6 @@
   networking = {
     hostName = "lithium";
 
-    firewall.allowedUDPPorts = [ 51820 ];
-
     wg-quick.interfaces = {
       wg0 = {
         autostart = true;
@@ -38,6 +36,11 @@
     Restart = "on-failure";
     RestartSec = "1s";
   };
+  services.clatd = {
+    enable = true;
+    settings.clat-v6-addr = "2001:14ba:a08c:2df0::f3";
+  };
+  systemd.services.clatd.wants = [ "wg-quick-wg0.service" ];
 
   services.openssh.enable = pkgs.lib.mkForce false;
   services.fail2ban.enable = pkgs.lib.mkForce false;
