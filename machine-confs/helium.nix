@@ -56,7 +56,6 @@
     Restart = "on-failure";
     RestartSec = "1s";
   };
-  services.clatd.enable = true;
 
   services.openssh.enable = pkgs.lib.mkForce false;
   services.fail2ban.enable = pkgs.lib.mkForce false;
