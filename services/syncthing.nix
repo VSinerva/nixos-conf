@@ -26,7 +26,7 @@
         };
         "syncthing" = {
           id = "ZX35ARB-3ULEUV3-NNUEREF-DEDWOJU-GE7A4PP-T7O43NI-SU564OD-E26HHA4";
-          addresses = [ "tcp://nixos-cpu.vsinerva.fi:22000" ];
+          addresses = [ "tcp://syncthing.vsinerva.fi:22000" ];
         };
         "phone" = {
           id = "K6QCK2R-BU65RAC-PHTGLIA-24IHDXE-N6VNBAW-QYREMVD-XWGWKRA-VX2BNAK";
