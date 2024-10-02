@@ -15,33 +15,39 @@
     dataDir = config.users.users.${config.services.syncthing.user}.home;
 
     settings = {
-      devices = {
-        "helium" = {
-          id = "2MRUBSY-NHXYMAW-SY22RHP-CNNMHKR-DPDKMM4-2XV5F6M-6KSNLQI-DD4EOAM";
-          addresses = [ "tcp://[fd08:d473:bcca:f0::2]:22000" ];
-        };
-        "lithium" = {
-          id = "S4ZORDV-QBY7QC7-FQHADMZ-NQSKJUA-7B7LQNS-CWJLSMG-JPMN7YJ-OVRDZQA";
-          addresses = [ "tcp://[fd08:d473:bcca:f0::3]:22000" ];
-        };
-        "syncthing" = {
-          id = "ZX35ARB-3ULEUV3-NNUEREF-DEDWOJU-GE7A4PP-T7O43NI-SU564OD-E26HHA4";
-          addresses = [ "tcp://syncthing.vsinerva.fi:22000" ];
-        };
-        "phone" = {
-          id = "K6QCK2R-BU65RAC-PHTGLIA-24IHDXE-N6VNBAW-QYREMVD-XWGWKRA-VX2BNAK";
-          addresses = [ "tcp://[fd08:d473:bcca:f0::10]:22000" ];
-        };
-      };
+      devices = pkgs.lib.mkMerge [
+        {
+          "syncthing" = {
+            id = "ZX35ARB-3ULEUV3-NNUEREF-DEDWOJU-GE7A4PP-T7O43NI-SU564OD-E26HHA4";
+            addresses = [ "tcp://syncthing.vsinerva.fi:22000" ];
+          };
+        }
+        (pkgs.lib.mkIf (config.networking.hostName == "syncthing") {
+          "helium" = {
+            id = "2MRUBSY-NHXYMAW-SY22RHP-CNNMHKR-DPDKMM4-2XV5F6M-6KSNLQI-DD4EOAM";
+            addresses = [ "tcp://[fd08:d473:bcca:f0::2]:22000" ];
+          };
+          "lithium" = {
+            id = "S4ZORDV-QBY7QC7-FQHADMZ-NQSKJUA-7B7LQNS-CWJLSMG-JPMN7YJ-OVRDZQA";
+            addresses = [ "tcp://[fd08:d473:bcca:f0::3]:22000" ];
+          };
+          "phone" = {
+            id = "K6QCK2R-BU65RAC-PHTGLIA-24IHDXE-N6VNBAW-QYREMVD-XWGWKRA-VX2BNAK";
+            addresses = [ "tcp://[fd08:d473:bcca:f0::10]:22000" ];
+          };
+        })
+      ];
 
       folders =
         let
           default = {
-            devices = [
-              "helium"
-              "lithium"
-              "syncthing"
-              "phone"
+            devices = pkgs.lib.mkMerge [
+              [ "syncthing" ]
+              (pkgs.lib.mkIf (config.networking.hostName == "syncthing") [
+                "helium"
+                "lithium"
+                "phone"
+              ])
             ];
             versioning = {
               type = "trashcan";
@@ -50,10 +56,12 @@
             fsWatcherDelayS = 1;
           };
           default-no-phone = default // {
-            devices = [
-              "helium"
-              "lithium"
-              "syncthing"
+            devices = pkgs.lib.mkMerge [
+              [ "syncthing" ]
+              (pkgs.lib.mkIf (config.networking.hostName == "syncthing") [
+                "helium"
+                "lithium"
+              ])
             ];
           };
         in
