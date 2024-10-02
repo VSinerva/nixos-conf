@@ -70,7 +70,7 @@
           "~/Downloads" = default-no-phone;
           "~/Music" = default-no-phone;
           "~/Pictures" = default;
-          "~/Projects" = default;
+          "~/Projects" = default-no-phone;
           "~/School" = default;
           "~/Videos" = default-no-phone;
           "~/Zotero" = default;
