@@ -161,11 +161,7 @@
   # Define systemd template unit for reporting status via ntfy
   systemd.services =
     let
-      services = [
-        "nixos-upgrade"
-        "nix-gc"
-        "nix-optimize"
-      ];
+      services = [ "nixos-upgrade" ];
     in
     {
       "notify-push@" = {
