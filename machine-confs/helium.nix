@@ -20,6 +20,7 @@
         peers = [
           {
             publicKey = "f9QoYPxyaxylUcOI9cE9fE9DJoEX4c6GUtr4p+rsd34=";
+            presharedKeyFile = "/root/wireguard-keys/psk-home";
             allowedIPs = [
               "fd08:d473:bcca::/64"
               "fd08:d473:bcca:f0::/64"
