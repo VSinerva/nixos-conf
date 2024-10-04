@@ -25,6 +25,7 @@
   environment.systemPackages = with pkgs; [
     nodejs-slim
     nixfmt-rfc-style
+    nixd
   ];
 
   #################### Neovim configuration ####################
@@ -71,7 +72,14 @@
               rust-analyzer.inlayHints.expressionAdjustmentHints.enable: "always",
               rust-analyzer.inlayHints.expressionAdjustmentHints.hideOutsideUnsafe: true,
               rust-analyzer.inlayHints.lifetimeElisionHints.enable: "always",
-              rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames: true
+              rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames: true,
+              
+              "languageserver": {
+                "nix": {
+                  "command": "nixd",
+                  "filetypes": ["nix"]
+                }
+              }
             }
           ''}";
         in
