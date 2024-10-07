@@ -8,6 +8,8 @@
     ../services/syncthing.nix
   ];
 
+  users.users.vili.hashedPasswordFile = pkgs.lib.mkForce null;
+
   # HARDWARE SPECIFIC
   services.qemuGuest.enable = true;
 }
