@@ -11,7 +11,7 @@
       "audio"
     ];
     openssh.authorizedKeys.keys = config.users.users.root.openssh.authorizedKeys.keys;
-    hashedPasswordFile = "/home/vili/.hashedPasswordFile";
+    hashedPasswordFile = "/root/hashed-passwords/vili";
   };
 
   users.groups.vili.gid = 1000;
