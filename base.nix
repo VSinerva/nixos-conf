@@ -205,7 +205,7 @@
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
-    timeout = 0;
+    timeout = pkgs.lib.mkDefault 0;
   };
   services.logind.lidSwitch = if config.boot.resumeDevice != "" then "hibernate" else "suspend";
 }
