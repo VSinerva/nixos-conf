@@ -76,6 +76,7 @@
     ../hardware-specific/trackball.nix
     ../hardware-specific/amd-laptop.nix
     ../hardware-specific/usb-automount.nix
+    ../hardware-specific/onlykey.nix
   ];
 
   services.xserver.displayManager.setupCommands = ''
