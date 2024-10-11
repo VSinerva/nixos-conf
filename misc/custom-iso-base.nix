@@ -55,12 +55,30 @@ in
     ../base.nix
   ];
 
-  environment.systemPackages = [
-    pkgs.cryptsetup
-    create-partitions
-    create-filesystems
-    prep-install
-  ];
+  environment.systemPackages =
+    (with pkgs; [
+      cryptsetup
+      onlykey
+      onlykey-cli
+      onlykey-agent
+    ])
+    ++ [
+      create-partitions
+      create-filesystems
+      prep-install
+    ];
+
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+    pinentryPackage = pkgs.pinentry-curses;
+  };
+  services.udev.extraRules = ''
+    ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="60fc", ENV{ID_MM_DEVICE_IGNORE}="1"
+    ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="60fc", ENV{MTP_NO_PROBE}="1"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="60fc", MODE:="0666"
+    KERNEL=="ttyACM*", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="60fc", MODE:="0666"
+  '';
 
   isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 
