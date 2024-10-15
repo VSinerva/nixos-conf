@@ -93,11 +93,6 @@
   ];
 
   boot = {
-    initrd.luks.devices."luks-f6e1979b-0dee-4ee9-8170-10490019854b" = {
-      keyFileSize = 8192;
-      keyFile = "/dev/disk/by-id/usb-Kingston_DataTraveler_3.0_E0D55EA5741216B0A93E02B3-0:0";
-      fallbackToPassword = true;
-    };
     resumeDevice = "/dev/mapper/luks-f6e1979b-0dee-4ee9-8170-10490019854b";
     kernelParams = [ "resume_offset=44537856" ];
   };
