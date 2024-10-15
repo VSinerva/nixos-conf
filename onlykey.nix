@@ -19,6 +19,7 @@
 
     onlykey-cli
     onlykey-agent
+    gpa
   ];
 
   programs.gnupg.agent = {
