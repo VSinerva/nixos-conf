@@ -69,12 +69,6 @@
   ];
 
   boot = {
-    initrd.luks.devices."nixos" = {
-      keyFileSize = 8192;
-      keyFile = "/dev/disk/by-id/usb-Kingston_DataTraveler_3.0_E0D55EA5741216B0A93E02B3-0:0";
-      fallbackToPassword = true;
-    };
-
     resumeDevice = "/dev/mapper/nixos";
     kernelParams = [ "resume_offset=39292928" ];
   };
