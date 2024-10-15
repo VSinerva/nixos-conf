@@ -69,7 +69,7 @@
     ../users/vili.nix
     ../desktop.nix
     ../development.nix
-    ../key-management.nix
+    ../onlykey.nix
     ../services/syncthing.nix
     ../services/redshift.nix
     ../services/game-streaming.nix

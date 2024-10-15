@@ -27,4 +27,6 @@
     pinentryPackage = pkgs.pinentry-curses;
   };
   hardware.onlykey.enable = true;
+
+  security.pam.u2f.enable = true;
 }
