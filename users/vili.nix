@@ -15,9 +15,4 @@
   };
 
   users.groups.vili.gid = 1000;
-
-  programs.ssh = {
-    startAgent = true;
-    enableAskPassword = false;
-  };
 }
