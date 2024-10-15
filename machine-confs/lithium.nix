@@ -51,12 +51,12 @@
     ../users/vili.nix
     ../desktop.nix
     ../development.nix
+    ../onlykey.nix
     ../services/syncthing.nix
     ../services/redshift.nix
     ../hardware-specific/keychron-q11.nix
     ../hardware-specific/trackball.nix
     ../hardware-specific/usb-automount.nix
-    ../hardware-specific/onlykey.nix
   ];
 
   system.autoUpgrade.allowReboot = pkgs.lib.mkForce false;
