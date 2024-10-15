@@ -77,9 +77,8 @@
     settings.PasswordAuthentication = false;
   };
   users.users.root.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBbGREoK1uVny1s8FK3KZ74Wmaf0VtifhqPyK69C/Gez vili@helium"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPivDyDYrCRBHRl9zup1Gj5vtyesOW/XKG/68kA8HLaW vili@lithium"
     "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIPiupf3xK6eWvno7R2rDYPuDxVvbmzWh5EkR1rquvV9hAAAABHNzaDo= vili@helium"
+    "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIHr/1uVk5cWRWAELvwVvBG+eAbkKqpH2gat1yKKO11roAAAABHNzaDo= vili@lithium"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOOk8akyi6Ob1EOPugxnjdlMQs9rOAbxBbakT8olBFe7 backup_ssh"
   ];
 
