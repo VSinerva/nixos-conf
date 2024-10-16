@@ -27,6 +27,9 @@
     pinentryPackage = pkgs.pinentry-curses;
   };
   hardware.onlykey.enable = true;
+  environment.variables = {
+    GNUPGHOME = "~/.gnupg/onlykey";
+  };
 
   security.pam.u2f.enable = true;
 }
