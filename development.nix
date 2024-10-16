@@ -8,7 +8,7 @@
       user = {
         email = "vili.m.sinerva@gmail.com";
         name = "Vili Sinervä";
-        signingkey = "/home/vili/.ssh/id_ed25519_sk.pub";
+        signingkey = "/home/vili/.ssh/id_ed25519.pub";
       };
       merge = {
         ff = "true";
