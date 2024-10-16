@@ -69,6 +69,14 @@
   ];
 
   boot = {
+    loader.timeout = 10;
+    initrd.luks = {
+      fido2Support = true;
+      devices."nixos".fido2 = {
+        passwordLess = true;
+        credential = "f29b0760a6ec3b18b0a9958d77d8be8b15ff4fd90d42c3ceaeeb5d24a19c8f81315f52dae2262619c1da2be7562ec9dd94888c71a9326fea70dfe16214b5ea8ec014225afa01";
+      };
+    };
     resumeDevice = "/dev/mapper/nixos";
     kernelParams = [ "resume_offset=39292928" ];
   };

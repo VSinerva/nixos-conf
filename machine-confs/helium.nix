@@ -93,6 +93,14 @@
   ];
 
   boot = {
+    loader.timeout = 10;
+    initrd.luks = {
+      fido2Support = true;
+      devices."luks-f6e1979b-0dee-4ee9-8170-10490019854b".fido2 = {
+        passwordLess = true;
+        credential = "df9233221fa09173fea61d8b8516d184f8ede475024a88201b34d838ecf306ee070052dae2262619c1da2be7562ec9dd94888c71a9326fea70dfe16214b5ea8ec014d86afa01";
+      };
+    };
     resumeDevice = "/dev/mapper/luks-f6e1979b-0dee-4ee9-8170-10490019854b";
     kernelParams = [ "resume_offset=44537856" ];
   };
