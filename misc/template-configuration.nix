@@ -7,23 +7,6 @@ let
     url = "https://github.com/VSinerva/nixos-conf.git";
     name = "nixos-conf-github";
     ref = "main";
-    publicKeys = [
-      {
-        # helium
-        type = "ssh-ed25519-sk";
-        key = "AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIPiupf3xK6eWvno7R2rDYPuDxVvbmzWh5EkR1rquvV9hAAAABHNzaDo=";
-      }
-      {
-        # lithium
-        type = "ssh-ed25519-sk";
-        key = "AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIHr/1uVk5cWRWAELvwVvBG+eAbkKqpH2gat1yKKO11roAAAABHNzaDo=";
-      }
-      {
-        # backup
-        type = "ssh-ed25519";
-        key = "AAAAC3NzaC1lZDI1NTE5AAAAIOOk8akyi6Ob1EOPugxnjdlMQs9rOAbxBbakT8olBFe7";
-      }
-    ];
   };
 in
 {
