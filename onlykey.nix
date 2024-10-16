@@ -19,17 +19,8 @@
 
     onlykey-cli
     onlykey-agent
-    gpa
   ];
 
-  programs.gnupg.agent = {
-    enable = true;
-    pinentryPackage = pkgs.pinentry-curses;
-  };
   hardware.onlykey.enable = true;
-  environment.variables = {
-    GNUPGHOME = "~/.gnupg/onlykey";
-  };
-
   security.pam.u2f.enable = true;
 }
