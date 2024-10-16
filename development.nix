@@ -8,7 +8,7 @@
       user = {
         email = "vili.m.sinerva@gmail.com";
         name = "Vili Sinervä";
-        signingkey = "/home/vili/.ssh/id_ed25519.pub";
+        signingkey = "DF8FEAF54EFAC996!";
       };
       merge = {
         ff = "true";
@@ -16,7 +16,6 @@
       pull = {
         ff = "only";
       };
-      gpg.format = "ssh";
       commit.gpgsign = "true";
     };
   };
