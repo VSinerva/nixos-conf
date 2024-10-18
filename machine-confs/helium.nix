@@ -93,7 +93,7 @@
   ];
 
   boot = {
-    loader.timeout = 10;
+    loader.timeout = 3;
     initrd.luks = {
       fido2Support = true;
       devices."luks-f6e1979b-0dee-4ee9-8170-10490019854b".fido2 = {
