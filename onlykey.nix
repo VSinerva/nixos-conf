@@ -32,4 +32,5 @@
   };
 
   security.pam.u2f.enable = true;
+  programs.i3lock.u2fSupport = true;
 }
