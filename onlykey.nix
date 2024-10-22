@@ -33,4 +33,7 @@
 
   security.pam.u2f.enable = true;
   programs.i3lock.u2fSupport = true;
+  services.udev.extraRules = ''
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="60fc", MODE:="0660", GROUP:="onlykey", RUN+="${pkgs.i3lock}/bin/i3lock"
+  '';
 }
