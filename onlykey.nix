@@ -28,7 +28,7 @@
   };
   hardware.onlykey.enable = true;
   environment.variables = {
-    GNUPGHOME = "~/.gnupg/onlykey";
+    GNUPGHOME = "/home/vili/.gnupg/onlykey";
   };
 
   security.pam.u2f.enable = true;
