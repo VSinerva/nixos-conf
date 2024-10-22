@@ -84,6 +84,17 @@ pkgs.writeText "i3-conf" ''
   bindsym $mod+Return exec alacritty
   bindsym $mod+d exec --no-startup-id "rofi -theme 'Arc-Dark' -show combi -combi-modes 'run' -modes combi"
 
+  bindsym $mod+Shift+p mode "$mode_system"
+  set $mode_system (l)ock, (h)ibernate, (r)eboot, (s)hutdown
+  mode "$mode_system" {
+        bindsym l exec --no-startup-id i3lock, mode "default"
+        bindsym h exec --no-startup-id systemctl hibernate, mode "default"
+        bindsym r exec --no-startup-id systemctl reboot, mode "default"
+        bindsym s exec --no-startup-id systemctl poweroff, mode "default"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+  }
+
 
 
   font xft:DejaVuSansMono-Book 14
