@@ -2,6 +2,7 @@
 {
   imports = [ ../base.nix ];
 
+  # Networking conf including WireGuard
   networking = {
     hostName = "exoplasim";
 
@@ -14,11 +15,11 @@
         listenPort = 51821;
 
         peers = [
-          {
-            publicKey = "9FOmHXs0CmDlW61noS7DqhgH5GfQHzg8ZMasyNQACSc=";
-            presharedKeyFile = "/root/wireguard-keys/psk";
-            allowedIPs = [ "10.0.0.2/32" ];
-          }
+          #          {
+          #            publicKey = "TODO";
+          #            presharedKeyFile = "/root/wireguard-keys/psk";
+          #            allowedIPs = [ "10.0.0.2/32" ];
+          #          }
         ];
       };
     };
