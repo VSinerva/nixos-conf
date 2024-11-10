@@ -38,6 +38,28 @@
   };
   users.groups.worker.gid = 1001;
 
+  system.autoUpgrade.allowReboot = pkgs.lib.mkForce false;
+
+  programs.rust-motd = {
+    enable = true;
+    enableMotdInSSHD = true;
+    refreshInterval = "*:*:0/5";
+    settings = {
+      banner = {
+        color = "green";
+        command = ''
+          ${pkgs.figlet}/bin/figlet "ExoPlaSim Worker";
+          ${pkgs.coreutils-full}/bin/echo -e "$(${pkgs.procps}/bin/ps --User worker --user worker --forest --format start_time=STARTED,time=CPU_TIME,%cpu,%mem,comm)";
+        '';
+      };
+      uptime.prefix = "System has been running for";
+      filesystems = {
+        Main = "/";
+      };
+      memory.swap_pos = "beside";
+    };
+  };
+
   # HARDWARE SPECIFIC
   services.qemuGuest.enable = true;
 }
