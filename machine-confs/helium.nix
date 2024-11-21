@@ -79,8 +79,6 @@
     ../hardware-specific/usb-automount.nix
   ];
 
-  services.tlp.enable = true;
-
   services.xserver.displayManager.setupCommands = ''
     ${pkgs.xorg.xrandr}/bin/xrandr --output DisplayPort-0 --auto --pos 0x0 --primary --output eDP --auto --pos 3840x360
   '';
