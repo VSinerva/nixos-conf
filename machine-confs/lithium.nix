@@ -59,6 +59,8 @@
     ../hardware-specific/usb-automount.nix
   ];
 
+  services.tlp.enable = true;
+
   system.autoUpgrade.allowReboot = pkgs.lib.mkForce false;
 
   swapDevices = pkgs.lib.mkForce [
