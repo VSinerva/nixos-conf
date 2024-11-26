@@ -7,7 +7,7 @@
   networking.firewall.allowedUDPPorts = [ 443 ];
 
   services.nextcloud = {
-    package = pkgs.nextcloud29;
+    package = pkgs.nextcloud30;
     enable = true;
     hostName = "nextcloud.vsinerva.fi";
     autoUpdateApps.enable = true;
