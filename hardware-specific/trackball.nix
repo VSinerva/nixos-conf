@@ -7,18 +7,6 @@
     }
   ];
 
-  disabledModules = [ "services/hardware/libinput.nix" ];
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      moonlight-qt = prev.moonlight-qt.overrideAttrs (old: {
-        patches = (old.patches or [ ]) ++ [ ../misc/mouse-accel.patch ];
-      });
-    })
-  ];
-
-  imports = [ ../misc/libinput.nix ];
-
   hardware.logitech.wireless = {
     enable = true;
     enableGraphical = true;

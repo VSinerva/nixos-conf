@@ -4,7 +4,7 @@
 
   environment.systemPackages = with pkgs; [ zenmonitor ];
 
-  hardware.opengl.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
+  hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
 
   boot.initrd.kernelModules = [ "amdgpu" ];
 

@@ -83,6 +83,7 @@ in
     };
   };
 
+  services.pipewire.enable = false;
   nixpkgs.config.pulseaudio = true;
   hardware.pulseaudio.enable = true;
 

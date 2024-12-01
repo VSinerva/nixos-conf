@@ -3,7 +3,7 @@ let
   nixvim = import (
     builtins.fetchGit {
       url = "https://github.com/nix-community/nixvim";
-      ref = "nixos-24.05";
+      ref = "nixos-24.11";
     }
   );
 in
@@ -87,7 +87,7 @@ in
       gitsigns.enable = true;
       lualine = {
         enable = true;
-        iconsEnabled = false;
+        settings.options.iconsEnabled = false;
       };
       markdown-preview.enable = true;
       nix.enable = true;
@@ -95,12 +95,12 @@ in
       sleuth.enable = true;
       tmux-navigator = {
         enable = true;
-        settings.no_mappings = true;
+        settings.no_mappings = 1;
       };
       treesitter = {
         enable = true;
         folding = true;
-        indent = true;
+        settings.indent.enable = true;
         nixGrammars = true;
       };
 
@@ -127,13 +127,13 @@ in
           clangd.enable = true;
           cmake.enable = true;
           dockerls.enable = true;
-          docker-compose-language-service.enable = true;
+          docker_compose_language_service.enable = true;
           eslint.enable = true;
           html.enable = true;
           jsonls.enable = true;
           nixd.enable = true;
           pylsp.enable = true;
-          rust-analyzer = {
+          rust_analyzer = {
             enable = true;
             installCargo = true;
             installRustc = true;
