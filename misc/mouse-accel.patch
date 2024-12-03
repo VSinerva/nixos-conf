@@ -1,0 +1,15 @@
+diff --git a/app/streaming/input/input.cpp b/app/streaming/input/input.cpp
+index 95db06e0..d1d34fd5 100644
+--- a/app/streaming/input/input.cpp
++++ b/app/streaming/input/input.cpp
+@@ -39,6 +39,10 @@ SdlInputHandler::SdlInputHandler(StreamingPreferences& prefs, int streamWidth, i
+         m_CaptureSystemKeysMode = StreamingPreferences::CSK_ALWAYS;
+     }
+ 
++    // This is used to always grab the OS-modified input for the mouse
++    // This is because I am using OS-level functionality for mouse acceleration
++    SDL_SetHint(SDL_HINT_MOUSE_RELATIVE_MODE_WARP, "1");
++
+     // Allow gamepad input when the app doesn't have focus if requested
+     SDL_SetHint(SDL_HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS, prefs.backgroundGamepad ? "1" : "0");
+ 

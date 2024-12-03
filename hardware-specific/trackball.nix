@@ -7,6 +7,14 @@
     }
   ];
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      moonlight-qt = prev.moonlight-qt.overrideAttrs (old: {
+        patches = (old.patches or [ ]) ++ [ ../misc/mouse-accel.patch ];
+      });
+    })
+  ];
+
   hardware.logitech.wireless = {
     enable = true;
     enableGraphical = true;
