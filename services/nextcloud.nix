@@ -6,31 +6,32 @@
   ];
   networking.firewall.allowedUDPPorts = [ 443 ];
 
-  services.nextcloud = {
-    package = pkgs.nextcloud30;
-    enable = true;
-    hostName = "nextcloud.vsinerva.fi";
-    autoUpdateApps.enable = true;
-    https = true;
-    maxUploadSize = "10G";
-    config = {
-      adminpassFile = "/var/lib/nextcloud/adminpass";
+  services = {
+    nextcloud = {
+      package = pkgs.nextcloud30;
+      enable = true;
+      hostName = "nextcloud.vsinerva.fi";
+      autoUpdateApps.enable = true;
+      https = true;
+      maxUploadSize = "10G";
+      config = {
+        adminpassFile = "/var/lib/nextcloud/adminpass";
+      };
+      settings = {
+        overwriteprotocol = "https";
+        maintenancce_window_start = 1;
+        opcache.interned_strings_buffer = 32;
+      };
     };
-    settings = {
-      overwriteprotocol = "https";
-    };
-  };
 
-  services.nginx.virtualHosts = {
-    ${config.services.nextcloud.hostName} = {
-      forceSSL = true;
-      kTLS = true;
-      sslCertificate = "/var/lib/nextcloud/nextcloud_fullchain.pem";
-      sslCertificateKey = "/var/lib/nextcloud/nextcloud_privkey.pem";
-      locations = {
-        "/".proxyWebsockets = true;
-        "~ ^\/nextcloud\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+|.+\/richdocumentscode\/proxy)\.php(?:$|\/)" =
-          { };
+    nginx = {
+      recommendedGzipSettings = true;
+
+      virtualHosts.${config.services.nextcloud.hostName} = {
+        forceSSL = true;
+        kTLS = true;
+        sslCertificate = "/var/lib/nextcloud/fullchain.pem";
+        sslCertificateKey = "/var/lib/nextcloud/privkey.pem";
       };
     };
   };
