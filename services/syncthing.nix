@@ -18,7 +18,7 @@
       devices = pkgs.lib.mkMerge [
         {
           "syncthing" = {
-            id = "ZX35ARB-3ULEUV3-NNUEREF-DEDWOJU-GE7A4PP-T7O43NI-SU564OD-E26HHA4";
+            id = "J6GNM4Z-2TWASPT-3P3EW4V-KZEQYFF-TXL22QX-4YTZ3WO-WLM7GQ7-NUP66A4";
             addresses = [ "tcp://syncthing.vsinerva.fi:22000" ];
           };
         }
