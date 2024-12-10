@@ -1,17 +1,19 @@
 { config, pkgs, ... }:
 pkgs.writeText "alacritty-conf" ''
   [font]
-  size = 16
+  size = 13
 
   [cursor]
-  shape = "Beam"
-  blinking = "On"
+  style.shape = "Beam"
+  style.blinking = "On"
+  blink_timeout = 0
+  unfocused_hollow = false
 
   [keyboard]
   bindings = [
-    {key = "-", mods = "Super", action = "DecreaseFontSize"},
-    {key = "+", mods = "Super", action = "IncreaseFontSize"},
-    {key = "=", mods = "Super", action = "ResetFontSize"},
-    {key = "Enter", mods = "Super | Shift", action = "SpawnNewInstance"},
+    {key = "-", mods = "Alt", action = "DecreaseFontSize"},
+    {key = "+", mods = "Alt | Shift", action = "IncreaseFontSize"},
+    {key = "=", mods = "Alt", action = "ResetFontSize"},
+    {key = "Enter", mods = "Alt | Shift", action = "SpawnNewInstance"},
   ]
 ''
