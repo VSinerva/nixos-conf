@@ -24,6 +24,7 @@ in
   imports = [ ./program-config-files/firefox.nix ];
 
   environment.systemPackages = with pkgs; [
+    alacritty
     i3status
     rofi
     arandr
@@ -42,7 +43,6 @@ in
     networkmanagerapplet
     flameshot
     speedcrunch
-    #    brave
 
     zotero
     kile

@@ -2,7 +2,6 @@
 {
   ######################################## Packages ###############################################
   environment.systemPackages = with pkgs; [
-    alacritty
     tmux
     git
     nvi

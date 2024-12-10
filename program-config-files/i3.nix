@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 let
+  alacritty-conf = "${
+    (import ./alacritty.nix {
+      inherit config;
+      inherit pkgs;
+    })
+  }";
   i3status-conf = "${pkgs.writeText "i3status-conf" ''
     # It is important that this file is edited as UTF-8.
     # The following line should contain a sharp s:
@@ -81,7 +87,8 @@ pkgs.writeText "i3-conf" ''
   bindcode 232 exec --no-startup-id brightnessctl set 5%-
   bindcode 233 exec --no-startup-id brightnessctl set 5%+
 
-  bindsym $mod+Return exec alacritty
+  bindsym $mod+Return exec "alacritty --config-file ${alacritty-conf}"
+  bindsym $mod+Shift+Return exec "alacritty --config-file ${alacritty-conf} --working-directory $PWD"
   bindsym $mod+d exec --no-startup-id "rofi -theme 'Arc-Dark' -show combi -combi-modes 'run' -modes combi"
 
   bindsym $mod+Shift+p mode "$mode_system"
