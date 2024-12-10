@@ -88,7 +88,6 @@ pkgs.writeText "i3-conf" ''
   bindcode 233 exec --no-startup-id brightnessctl set 5%+
 
   bindsym $mod+Return exec "alacritty --config-file ${alacritty-conf}"
-  bindsym $mod+Shift+Return exec "alacritty --config-file ${alacritty-conf} --working-directory $PWD"
   bindsym $mod+d exec --no-startup-id "rofi -theme 'Arc-Dark' -show combi -combi-modes 'run' -modes combi"
 
   bindsym $mod+Shift+p mode "$mode_system"
