@@ -24,6 +24,9 @@ in
       pull = {
         ff = "only";
       };
+      commit = {
+        verbose = "true";
+      };
       commit.gpgsign = "true";
     };
   };
