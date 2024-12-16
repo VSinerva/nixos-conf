@@ -37,6 +37,10 @@ in
     nixd
   ];
 
+  fonts.packages = with pkgs; [
+    nerdfonts
+  ];
+
   #################### Neovim configuration ####################
   imports = [ nixvim.nixosModules.nixvim ];
 
@@ -62,6 +66,11 @@ in
 
     keymaps = [
       {
+        key = "T";
+        action = "<cmd>Neotree<cr>";
+        options.silent = true;
+      }
+      {
         key = "<C-h>";
         action = "<cmd>TmuxNavigateLeft<cr>";
         options.silent = true;
@@ -84,7 +93,6 @@ in
     ];
 
     # TODO Autocomplete
-    # TODO Filebrowser
     # TODO Check desireable keybinds and commands for all plugins
     plugins = {
       gitsigns.enable = true;
@@ -93,6 +101,7 @@ in
         settings.options.iconsEnabled = false;
       };
       markdown-preview.enable = true;
+      neo-tree.enable = true;
       nix.enable = true;
       rainbow-delimiters.enable = true;
       sleuth.enable = true;
@@ -106,6 +115,7 @@ in
         settings.indent.enable = true;
         nixGrammars = true;
       };
+      web-devicons.enable = true;
 
       #      cmp-vsnip.enable = true;
       friendly-snippets.enable = true;
@@ -145,7 +155,6 @@ in
         };
       };
       lsp-format.enable = true;
-
     };
   };
 }
