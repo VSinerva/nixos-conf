@@ -11,9 +11,7 @@ pkgs.writeText "alacritty-conf" ''
 
   [keyboard]
   bindings = [
-    {key = "-", mods = "Alt", action = "DecreaseFontSize"},
-    {key = "=", mods = "Alt", action = "IncreaseFontSize"},
-    {key = "+", mods = "Alt | Shift", action = "ResetFontSize"},
+    {key = "+", mods = "Control | Shift", action = "ResetFontSize"},
     {key = "Enter", mods = "Alt | Shift", action = "SpawnNewInstance"},
   ]
 ''
