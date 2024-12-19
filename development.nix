@@ -122,6 +122,7 @@ in
           { name = "nvim-lsp"; }
           { name = "vim-lsp-signature-help"; }
           { name = "vim-vsnip"; }
+          { name = "treesitter"; }
         ];
       };
       friendly-snippets.enable = true;
