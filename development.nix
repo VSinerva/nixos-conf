@@ -94,6 +94,7 @@ in
 
     # TODO Check desireable keybinds and commands for all plugins
     plugins = {
+      fugitive.enable = true;
       gitsigns.enable = true;
       lualine = {
         enable = true;
@@ -120,19 +121,17 @@ in
         enable = true;
         settings = {
           sources = [
-            { name = "nvim-lsp"; }
-            { name = "buffer"; }
-            { name = "vim-lsp-signature-help"; }
             { name = "vim-vsnip"; }
+            { name = "vim-lsp-signature-help"; }
+            { name = "nvim-lsp"; }
             { name = "treesitter"; }
+            { name = "buffer"; }
           ];
           mapping = {
             "<C-Space>" = "cmp.mapping.complete()";
-            "<C-d>" = "cmp.mapping.scroll_docs(-4)";
             "<C-e>" = "cmp.mapping.close()";
-            "<C-f>" = "cmp.mapping.scroll_docs(4)";
             "<CR>" = "cmp.mapping.confirm({ select = true })";
-            "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+            "<C-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
             "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
           };
         };
