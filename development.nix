@@ -92,7 +92,6 @@ in
       }
     ];
 
-    # TODO Autocomplete
     # TODO Check desireable keybinds and commands for all plugins
     plugins = {
       gitsigns.enable = true;
@@ -117,7 +116,14 @@ in
       };
       web-devicons.enable = true;
 
-      #      cmp-vsnip.enable = true;
+      cmp = {
+        enable = true;
+        settings.sources = [
+          { name = "nvim-lsp"; }
+          { name = "vim-lsp-signature-help"; }
+          { name = "vim-vsnip"; }
+        ];
+      };
       friendly-snippets.enable = true;
       nvim-autopairs.enable = true;
 
