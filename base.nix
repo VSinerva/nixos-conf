@@ -165,6 +165,7 @@
       enable = true;
       connectionConfig."connection.mdns" = "yes";
     };
+    firewall.allowedUDPPorts = [ 5353 ]; # mDNS
     tempAddresses = "disabled";
   };
   services.resolved.enable = true;
