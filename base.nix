@@ -161,27 +161,8 @@
 
   networking = {
     # Easiest to use and most distros use this by default.
-    networkmanager = {
-      enable = true;
-      connectionConfig."connection.mdns" = "yes";
-    };
+    networkmanager.enable = true;
     tempAddresses = "disabled";
-  };
-  # Config for Avahi mDNS service
-  services.avahi = {
-    enable = true;
-    wideArea = false;
-    ipv6 = true;
-    domainName = "vsinerva.fi";
-    browseDomains = [ "vsinerva.fi" ];
-    nssmdns4 = true;
-    nssmdns6 = true;
-    openFirewall = true;
-    publish = {
-      enable = true;
-      addresses = true;
-      domain = true;
-    };
   };
 
   users.mutableUsers = false; # Force all user management to happen throught nix-files
