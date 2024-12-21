@@ -159,8 +159,14 @@
   ######################################## Misc. ##################################################
   nixpkgs.config.allowUnfree = true;
 
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
-  networking.tempAddresses = "disabled";
+  networking = {
+    # Easiest to use and most distros use this by default.
+    networkmanager = {
+      enable = true;
+      connectionConfig."connection.mdns" = "yes";
+    };
+    tempAddresses = "disabled";
+  };
   services.resolved.enable = true;
 
   users.mutableUsers = false; # Force all user management to happen throught nix-files
