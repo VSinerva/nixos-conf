@@ -20,6 +20,10 @@
           #            presharedKeyFile = "/root/wireguard-keys/psk";
           #            allowedIPs = [ "10.0.0.2/32" ];
           #          }
+          {
+            publicKey = "9FOmHXs0CmDlW61noS7DqhgH5GfQHzg8ZMasyNQACSc=";
+            allowedIPs = [ "10.0.0.2/32" ];
+          }
         ];
       };
     };
