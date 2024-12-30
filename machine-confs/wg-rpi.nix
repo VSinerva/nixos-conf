@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 let
-  SSID = "ENTER_SSID";
-  SSIDpassword = "ENTER_PASSWORD";
-  interface = "wlan0";
+  #  SSID = "ENTER_SSID";
+  #  SSIDpassword = "ENTER_PASSWORD";
+  #  interface = "wlan0";
   wg_interface = "end0";
   hostname = "netflix-huijaus";
   ddPassFile = "/root/wg-conf/ddPassFile";
@@ -123,12 +123,14 @@ in
     };
   };
 
+  hardware.enableRedistributableFirmware = true;
+
   networking = {
     hostName = hostname;
     wireless = {
       enable = false;
-      networks."${SSID}".psk = SSIDpassword;
-      interfaces = [ interface ];
+      #      networks."${SSID}".psk = SSIDpassword;
+      #      interfaces = [ interface ];
     };
   };
 }
