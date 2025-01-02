@@ -70,44 +70,55 @@ in
         action = "<cmd>Neotree<cr>";
         options.silent = true;
       }
-      {
-        key = "<C-h>";
-        action = "<cmd>TmuxNavigateLeft<cr>";
-        options.silent = true;
-      }
-      {
-        key = "<C-j>";
-        action = "<cmd>TmuxNavigateDown<cr>";
-        options.silent = true;
-      }
-      {
-        key = "<C-k>";
-        action = "<cmd>TmuxNavigateUp<cr>";
-        options.silent = true;
-      }
-      {
-        key = "<C-l>";
-        action = "<cmd>TmuxNavigateRight<cr>";
-        options.silent = true;
-      }
     ];
 
     # TODO Check desireable keybinds and commands for all plugins
     plugins = {
       fugitive.enable = true;
-      gitsigns.enable = true;
-      lualine = {
+      gitsigns = {
         enable = true;
-        settings.options.iconsEnabled = false;
+        settings = {
+          current_line_blame_opts.delay = 100;
+          numhl = true;
+        };
       };
+      lualine.enable = true;
       markdown-preview.enable = true;
-      neo-tree.enable = true;
+      neo-tree = {
+        enable = true;
+        buffers.followCurrentFile = {
+          enabled = true;
+          leaveDirsOpen = true;
+        };
+      };
       nix.enable = true;
       rainbow-delimiters.enable = true;
       sleuth.enable = true;
       tmux-navigator = {
         enable = true;
         settings.no_mappings = 1;
+        keymaps = [
+          {
+            key = "<C-h>";
+            action = "left";
+            #options.silent = true;
+          }
+          {
+            key = "<C-j>";
+            action = "down";
+            #options.silent = true;
+          }
+          {
+            key = "<C-k>";
+            action = "up";
+            #options.silent = true;
+          }
+          {
+            key = "<C-l>";
+            action = "right";
+            #options.silent = true;
+          }
+        ];
       };
       treesitter = {
         enable = true;
@@ -116,6 +127,9 @@ in
         nixGrammars = true;
       };
       web-devicons.enable = true;
+      which-key = {
+        enable = true;
+      };
 
       cmp = {
         enable = true;
