@@ -127,7 +127,7 @@ in
         enable = true;
         settings.delay.__raw = ''
           function(ctx)
-            return ctx.plugin and 0 or 1000
+            return ctx.plugin and 0 or 500
           end
         '';
       };
