@@ -101,22 +101,18 @@ in
           {
             key = "<C-h>";
             action = "left";
-            #options.silent = true;
           }
           {
             key = "<C-j>";
             action = "down";
-            #options.silent = true;
           }
           {
             key = "<C-k>";
             action = "up";
-            #options.silent = true;
           }
           {
             key = "<C-l>";
             action = "right";
-            #options.silent = true;
           }
         ];
       };
@@ -129,6 +125,11 @@ in
       web-devicons.enable = true;
       which-key = {
         enable = true;
+        settings.delay.__raw = ''
+          function(ctx)
+            return ctx.plugin and 0 or 1000
+          end
+        '';
       };
 
       cmp = {
