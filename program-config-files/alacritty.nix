@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 pkgs.writeText "alacritty-conf" ''
   [font]
   size = 13

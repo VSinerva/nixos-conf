@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 let
   host = "generic";
   stateVersion = "24.11";

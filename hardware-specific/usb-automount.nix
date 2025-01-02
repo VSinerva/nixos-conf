@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
   services = {
     devmon.enable = true;

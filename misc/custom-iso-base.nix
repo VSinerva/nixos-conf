@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let
   create-partitions = pkgs.writeScriptBin "create-partitions" ''
     if [[ $# -ne 3 ]]

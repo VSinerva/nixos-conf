@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   ######################################## Packages ###############################################
   environment.systemPackages = with pkgs; [
@@ -172,5 +172,4 @@
     efi.canTouchEfiVariables = true;
     timeout = pkgs.lib.mkDefault 0;
   };
-  services.logind.lidSwitch = if config.boot.resumeDevice != "" then "hibernate" else "suspend";
 }
