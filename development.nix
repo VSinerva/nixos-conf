@@ -68,7 +68,10 @@ in
       {
         key = "T";
         action = "<cmd>Neotree<cr>";
-        options.silent = true;
+        options = {
+          silent = true;
+          desc = "Open Neotree";
+        };
       }
     ];
 
@@ -101,18 +104,22 @@ in
           {
             key = "<C-h>";
             action = "left";
+            options.desc = "Tmux Left";
           }
           {
             key = "<C-j>";
             action = "down";
+            options.desc = "Tmux Down";
           }
           {
             key = "<C-k>";
             action = "up";
+            options.desc = "Tmux Up";
           }
           {
             key = "<C-l>";
             action = "right";
+            options.desc = "Tmux Right";
           }
         ];
       };
@@ -158,15 +165,44 @@ in
         enable = true;
         keymaps = {
           diagnostic = {
-            "<leader>j" = "goto_next";
-            "<leader>k" = "goto_prev";
+            "<leader>j" = {
+              action = "goto_next";
+              desc = "Next Diagnostic";
+            };
+            "<leader>k" = {
+              action = "goto_prev";
+              desc = "Previous Diagnostic";
+            };
+            "<leader>K" = {
+              action = "open_float";
+              desc = "Line Diagnostics";
+            };
           };
           lspBuf = {
-            K = "hover";
-            gD = "references";
-            gd = "definition";
-            gi = "implementation";
-            gt = "type_definition";
+            gd = {
+              action = "definition";
+              desc = "Goto Definition";
+            };
+            gr = {
+              action = "references";
+              desc = "Goto References";
+            };
+            gD = {
+              action = "declaration";
+              desc = "Goto Declaration";
+            };
+            gI = {
+              action = "implementation";
+              desc = "Goto Implementation";
+            };
+            gT = {
+              action = "type_definition";
+              desc = "Type Definition";
+            };
+            K = {
+              action = "hover";
+              desc = "Hover";
+            };
           };
         };
         servers = {
@@ -188,6 +224,7 @@ in
         };
       };
       lsp-format.enable = true;
+      lsp-lines.enable = true;
     };
   };
 }
