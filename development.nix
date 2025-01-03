@@ -75,7 +75,7 @@ in
       }
     ];
 
-    # TODO Check desireable keybinds and commands for all plugins
+    # TODO Check desireable keybinds and commands for LSP
     plugins = {
       fugitive.enable = true;
       gitsigns = {
