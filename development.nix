@@ -86,7 +86,6 @@ in
       }
     ];
 
-    # TODO Check LSP code actions
     plugins = {
       fugitive.enable = true;
       gitsigns = {
@@ -177,41 +176,53 @@ in
         inlayHints = true;
         keymaps = {
           diagnostic = {
-            "<leader>j" = {
+            "<leader>dj" = {
               action = "goto_next";
               desc = "Next Diagnostic";
             };
-            "<leader>k" = {
+            "<leader>dk" = {
               action = "goto_prev";
               desc = "Previous Diagnostic";
             };
-            "<leader>K" = {
+            "<leader>dh" = {
               action = "open_float";
               desc = "Line Diagnostics";
             };
           };
           lspBuf = {
-            gd = {
+            "<leader>gd" = {
               action = "definition";
               desc = "Goto Definition";
             };
-            gr = {
+            "<leader>gr" = {
               action = "references";
               desc = "Goto References";
             };
-            gD = {
+            "<leader>gD" = {
               action = "declaration";
               desc = "Goto Declaration";
             };
-            gI = {
+            "<leader>gi" = {
               action = "implementation";
               desc = "Goto Implementation";
             };
-            gT = {
+            "<leader>gt" = {
               action = "type_definition";
               desc = "Type Definition";
             };
-            K = {
+            "<leader>s" = {
+              action = "workspace_symbol";
+              desc = "Search Symbol";
+            };
+            "<leader>r" = {
+              action = "rename";
+              desc = "Rename Symbol";
+            };
+            "<leader>a" = {
+              action = "code_action";
+              desc = "Code Action";
+            };
+            H = {
               action = "hover";
               desc = "Hover";
             };
