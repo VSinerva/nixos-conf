@@ -68,10 +68,21 @@ in
       {
         key = "T";
         action = "<cmd>Neotree<cr>";
-        options = {
-          silent = true;
-          desc = "Open Neotree";
-        };
+        options.desc = "Open Neotree";
+      }
+      {
+        mode = [
+          "i"
+          "v"
+        ];
+        key = "<C-c>";
+        action = "<Esc>";
+        options.desc = "Exit To Normal Mode";
+      }
+      {
+        key = "<leader>b";
+        action = "<cmd>Gitsigns toggle_current_line_blame<cr>";
+        options.desc = "Toggle Current Line Git Blame";
       }
     ];
 
@@ -163,6 +174,7 @@ in
 
       lsp = {
         enable = true;
+        inlayHints = true;
         keymaps = {
           diagnostic = {
             "<leader>j" = {
@@ -204,6 +216,13 @@ in
               desc = "Hover";
             };
           };
+          extra = [
+            {
+              action.__raw = "vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())";
+              key = "<leader>i";
+              options.desc = "Toggle LSP Inlay Hints";
+            }
+          ];
         };
         servers = {
           clangd.enable = true;
@@ -225,6 +244,7 @@ in
       };
       lsp-format.enable = true;
       lsp-lines.enable = true;
+      lsp-signature.enable = true;
     };
   };
 }
