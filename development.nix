@@ -218,8 +218,8 @@ in
           };
           extra = [
             {
-              action.__raw = "vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())";
-              key = "<leader>i";
+              action = "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>";
+              key = "<leader>h";
               options.desc = "Toggle LSP Inlay Hints";
             }
           ];
