@@ -78,7 +78,7 @@ in
     printing.enable = true;
     avahi = {
       enable = true;
-      nssmdns6 = true;
+      nssmdns4 = true;
       openFirewall = true;
     };
   };
