@@ -30,9 +30,19 @@
       virtualHosts.${config.services.nextcloud.hostName} = {
         forceSSL = true;
         kTLS = true;
-        sslCertificate = "/var/lib/nextcloud/fullchain.pem";
-        sslCertificateKey = "/var/lib/nextcloud/privkey.pem";
+        enableACME = true;
+        acmeRoot = null;
       };
+    };
+  };
+
+  security.acme = {
+    acceptTerms = true;
+    defaults = {
+      email = "vili.m.sinerva@gmail.com";
+      environmentFile = "/var/lib/nextcloud/dns-creds";
+      dnsProvider = "ovh";
+      group = "nginx";
     };
   };
 }
