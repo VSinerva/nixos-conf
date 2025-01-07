@@ -44,6 +44,10 @@
       dnsProvider = "ovh";
       group = "nginx";
       server = "https://acme-staging-v02.api.letsencrypt.org/directory";
+      extraLegoFlags = [
+        "--dns.propagation-wait"
+        "60s"
+      ];
     };
   };
 }
