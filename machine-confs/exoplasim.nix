@@ -10,7 +10,7 @@
 
     wg-quick.interfaces = {
       wg0 = {
-        address = [ "10.0.0.1/24" ];
+        address = [ "fd08:d473:bcca:f1::1/64" ];
         privateKeyFile = "/root/wireguard-keys/privatekey";
         listenPort = 51821;
 
@@ -22,7 +22,7 @@
           #          }
           {
             publicKey = "9FOmHXs0CmDlW61noS7DqhgH5GfQHzg8ZMasyNQACSc=";
-            allowedIPs = [ "10.0.0.2/32" ];
+            allowedIPs = [ "fd08:d473:bcca:f1::2/128" ];
           }
         ];
       };
