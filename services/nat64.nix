@@ -11,11 +11,18 @@
           # ExoPlaSim WireGuard
           "protocol" = "UDP";
           "ipv4 address" = "192.168.1.1#51821";
-          "ipv6 address" = "fd08:d473:bcca:0:699b:fcbf:f142:225c#51821";
+          "ipv6 address" = "fd08:d473:bcca:1:210:3292:4922:b9aa#51821";
         }
       ];
 
       pool4 = [
+        # Ports for static BIB entries
+        {
+          protocol = "UDP";
+          prefix = "192.168.1.1/32";
+          "port range" = "51821";
+        }
+
         # Port ranges for dynamic translation
         {
           protocol = "TCP";
@@ -31,13 +38,6 @@
           protocol = "ICMP";
           prefix = "192.168.1.1/32";
           "port range" = "30001-50000";
-        }
-
-        # Ports for static BIB entries
-        {
-          protocol = "UDP";
-          prefix = "192.168.1.1/32";
-          "port range" = "51821";
         }
       ];
     };
