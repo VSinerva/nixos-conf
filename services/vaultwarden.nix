@@ -1,5 +1,7 @@
 { ... }:
 {
+  imports = [ ./acme-dns.nix ];
+
   networking.firewall.allowedTCPPorts = [
     80
     443
@@ -38,8 +40,8 @@
       virtualHosts."vaultwarden.vsinerva.fi" = {
         forceSSL = true;
         kTLS = true;
-        sslCertificate = "/var/lib/vaultwarden/fullchain.pem";
-        sslCertificateKey = "/var/lib/vaultwarden/privkey.pem";
+        enableACME = true;
+        acmeRoot = null;
         locations."/" = {
           proxyPass = "http://127.0.0.1:8000";
         };

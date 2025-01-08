@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
 {
+  imports = [ ./acme-dns.nix ];
+
   networking.firewall.allowedTCPPorts = [
     80
     443
@@ -33,20 +35,6 @@
         enableACME = true;
         acmeRoot = null;
       };
-    };
-  };
-
-  security.acme = {
-    acceptTerms = true;
-    defaults = {
-      email = "vili.m.sinerva@gmail.com";
-      environmentFile = "/var/lib/nextcloud/dns-creds";
-      dnsProvider = "ovh";
-      group = "nginx";
-      extraLegoFlags = [
-        "--dns.propagation-wait"
-        "60s"
-      ];
     };
   };
 }
