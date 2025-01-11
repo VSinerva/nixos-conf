@@ -26,6 +26,8 @@ in
     autoStart = true;
     openFirewall = true;
     settings = {
+      min_log_level = "debug";
+      encoder = "nvenc";
       sunshine_name = "Gaming NixOS";
       resolutions = ''
         [
