@@ -1,28 +1,12 @@
 { pkgs, config, ... }:
 let
-  resolutions = [
+  resolution_list = [
     "1920x1080"
     "2400x1080"
     "2160x1440"
     "2560x1440"
     "3840x2160"
   ];
-  apps =
-    (
-      resolutions:
-      map (resolution: {
-        name = "${resolution} Desktop";
-        #          prep-cmd = [
-        #            {
-        #              do = "${pkgs.xrandr}/bin/kscreen-doctor output.DP-4.mode.2560x1440@144";
-        #              undo = "${pkgs.xrandr}/bin/kscreen-doctor output.DP-4.mode.3440x1440@144";
-        #            }
-        #          ];
-        exclude-global-prep-cmd = "false";
-        auto-detach = "true";
-      }) resolutions
-    )
-      resolutions;
 in
 {
   assertions = [
@@ -38,14 +22,37 @@ in
     openFirewall = true;
     settings = {
       sunshine_name = "Gaming NixOS";
-      resolutions = resolutions;
+      resolutions = ''
+        [
+          1920x1080,
+          2400x1080,
+          2160x1440,
+          2560x1440,
+          3840x2160
+        ]
+      '';
       fps = ''
         [30, 60, 90, 120]
       '';
       address_family = "both";
     };
     applications = {
-      apps = apps;
+      apps =
+        (
+          resolutions:
+          map (resolution: {
+            name = "${resolution} Desktop";
+            #          prep-cmd = [
+            #            {
+            #              do = "${pkgs.xrandr}/bin/kscreen-doctor output.DP-4.mode.2560x1440@144";
+            #              undo = "${pkgs.xrandr}/bin/kscreen-doctor output.DP-4.mode.3440x1440@144";
+            #            }
+            #          ];
+            exclude-global-prep-cmd = "false";
+            auto-detach = "true";
+          }) resolutions
+        )
+          resolution_list;
     };
   };
 }
