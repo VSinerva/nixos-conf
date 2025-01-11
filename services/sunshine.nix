@@ -39,12 +39,9 @@ in
     settings = {
       sunshine_name = "Gaming NixOS";
       resolutions = resolutions;
-      fps = [
-        30
-        60
-        90
-        120
-      ];
+      fps = ''
+        [30, 60, 90, 120]
+      '';
       address_family = "both";
     };
     applications = {
