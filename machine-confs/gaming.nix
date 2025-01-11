@@ -8,7 +8,7 @@
     ../desktop.nix
     ../gaming.nix
     ../services/sunshine.nix
-    #    ../hardware-specific/nvidia.nix
+    ../hardware-specific/nvidia.nix
   ];
 
   services.clatd = {
