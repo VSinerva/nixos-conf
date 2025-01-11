@@ -13,13 +13,6 @@
 
   users.users.vili.hashedPasswordFile = pkgs.lib.mkForce null;
 
-  swapDevices = pkgs.lib.mkForce [
-    {
-      device = "/var/lib/swapfile";
-      size = 16 * 1024;
-    }
-  ];
-
   # HARDWARE SPECIFIC
   services.qemuGuest.enable = true;
 }
