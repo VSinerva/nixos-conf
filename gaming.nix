@@ -7,6 +7,8 @@
     }
   ];
 
+  services.tlp.enable = true;
+
   programs = {
     steam = {
       enable = true;
