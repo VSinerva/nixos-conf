@@ -1,5 +1,9 @@
 { pkgs, config, ... }:
 let
+  sunshineCuda = pkgs.sunshine.override {
+    cudaSupport = true;
+    stdenv = pkgs.cudaPackages.backendStdenv;
+  };
   resolution_list = [
     "1920x1080"
     "2400x1080"
@@ -17,6 +21,7 @@ in
   ];
 
   services.sunshine = {
+    package = sunshineCuda;
     enable = true;
     autoStart = true;
     openFirewall = true;
@@ -42,12 +47,12 @@ in
           resolutions:
           map (resolution: {
             name = "${resolution} Desktop";
-            #          prep-cmd = [
-            #            {
-            #              do = "${pkgs.xrandr}/bin/kscreen-doctor output.DP-4.mode.2560x1440@144";
-            #              undo = "${pkgs.xrandr}/bin/kscreen-doctor output.DP-4.mode.3440x1440@144";
-            #            }
-            #          ];
+            prep-cmd = [
+              {
+                do = "${pkgs.xrandr}/bin/xrandr --output HDMI-0 --mode ${resolution}";
+                undo = "${pkgs.xrandr}/bin/xrandr --output HDMI-0 --auto";
+              }
+            ];
             exclude-global-prep-cmd = "false";
             auto-detach = "true";
           }) resolutions
