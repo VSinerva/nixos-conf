@@ -49,8 +49,8 @@ in
             name = "${resolution} Desktop";
             prep-cmd = [
               {
-                do = "${pkgs.xrandr}/bin/xrandr --output HDMI-0 --mode ${resolution}";
-                undo = "${pkgs.xrandr}/bin/xrandr --output HDMI-0 --auto";
+                do = "${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-0 --mode ${resolution}";
+                undo = "${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-0 --auto";
               }
             ];
             exclude-global-prep-cmd = "false";
