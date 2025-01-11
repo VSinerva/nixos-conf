@@ -54,6 +54,7 @@
     ../onlykey.nix
     ../services/syncthing.nix
     ../services/redshift.nix
+    ../services/moonlight.nix
     ../hardware-specific/keychron-q11.nix
     ../hardware-specific/trackball.nix
     ../hardware-specific/usb-automount.nix
