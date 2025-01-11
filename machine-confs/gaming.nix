@@ -15,10 +15,7 @@
     enable = true;
   };
 
-  users.users.vili = {
-    hashedPasswordFile = pkgs.lib.mkForce null;
-    extraGroups = [ "gamemode" ];
-  };
+  users.users.vili.hashedPasswordFile = pkgs.lib.mkForce null;
 
   swapDevices = pkgs.lib.mkForce [
     {

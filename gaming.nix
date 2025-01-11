@@ -7,13 +7,14 @@
     }
   ];
 
-  services.tlp.enable = true;
-
   programs = {
     steam = {
       enable = true;
       extraCompatPackages = [ pkgs.proton-ge-bin ];
     };
-    gamemode.enable = true;
+    gamemode = {
+      enable = true;
+      settings.general.desiredgov = "";
+    };
   };
 }
