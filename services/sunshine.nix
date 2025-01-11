@@ -1,4 +1,19 @@
 { pkgs, config, ... }:
+let
+  generateApps =
+    resolutions:
+    map (resolution: {
+      name = "${resolution} Desktop";
+      #          prep-cmd = [
+      #            {
+      #              do = "${pkgs.xrandr}/bin/kscreen-doctor output.DP-4.mode.2560x1440@144";
+      #              undo = "${pkgs.xrandr}/bin/kscreen-doctor output.DP-4.mode.3440x1440@144";
+      #            }
+      #          ];
+      exclude-global-prep-cmd = "false";
+      auto-detach = "true";
+    }) resolutions;
+in
 {
   assertions = [
     {
@@ -31,19 +46,7 @@
       address_family = "both";
     };
     applications = {
-      apps =
-        resolution:
-        map {
-          name = "${resolution} Desktop";
-          #          prep-cmd = [
-          #            {
-          #              do = "${pkgs.xrandr}/bin/kscreen-doctor output.DP-4.mode.2560x1440@144";
-          #              undo = "${pkgs.xrandr}/bin/kscreen-doctor output.DP-4.mode.3440x1440@144";
-          #            }
-          #          ];
-          exclude-global-prep-cmd = "false";
-          auto-detach = "true";
-        } config.services.sunshine.settings.resolutions;
+      apps = generateApps config.services.sunshine.settings.resolutions;
     };
   };
 }
