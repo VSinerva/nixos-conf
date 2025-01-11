@@ -12,9 +12,6 @@
       enable = true;
       extraCompatPackages = [ pkgs.proton-ge-bin ];
     };
-    gamemode = {
-      enable = true;
-      settings.general.desiredgov = "";
-    };
+    gamemode.enable = true;
   };
 }
