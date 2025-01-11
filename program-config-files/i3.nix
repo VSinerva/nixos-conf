@@ -24,6 +24,7 @@ let
     order += "battery all"
     order += "cpu_usage"
     order += "memory"
+    order += "ipv6"
     order += "ethernet _first_"
     order += "wireless _first_"
     order += "disk /"
@@ -48,6 +49,11 @@ let
             threshold_degraded = "10%"
     }
 
+    ipv6 {
+            format_up = " %iface: %ip "
+            format_down = " No IPv6 "
+    }
+
     ethernet _first_ {
             format_up = " LAN: %ip "
             format_down = " No LAN "
@@ -55,7 +61,7 @@ let
 
     wireless _first_ {
             format_up = " %quality%essid: %ip "
-            format_down = ""
+            format_down = " No WLAN "
     }
 
     disk "/" {
