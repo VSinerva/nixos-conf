@@ -57,7 +57,7 @@
   };
   services.clatd = {
     enable = true;
-    settings.clat-v6-addr = "2001:14ba:a08c:2df0::f2";
+    settings.clat-v6-addr = "2001:14ba:a08c:2df0::2";
   };
   systemd.services.clatd.wants = [ "wg-quick-wg0.service" ];
 
