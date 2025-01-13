@@ -9,6 +9,8 @@
     tree
     btop
     pwgen
+    dig
+    termshark
   ];
 
   ######################################## ZSH configuration ######################################
