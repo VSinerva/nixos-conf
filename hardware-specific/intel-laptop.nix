@@ -8,13 +8,6 @@
   };
 
   services = {
-    xserver = pkgs.lib.mkIf config.services.xserver.enable {
-      deviceSection = ''
-        Option "DRI" "2"
-        Option "TearFree" "true"
-      '';
-    };
-
     tlp = {
       enable = true;
       settings = {
