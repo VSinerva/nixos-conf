@@ -1,8 +1,14 @@
 { config, pkgs, ... }:
 {
+  hardware.graphics = {
+    extraPackages = with pkgs; [
+      intel-media-driver
+      intel-compute-runtime
+    ];
+  };
+
   services = {
     xserver = pkgs.lib.mkIf config.services.xserver.enable {
-      videoDrivers = [ "modesetting" ];
       deviceSection = ''
         Option "DRI" "2"
         Option "TearFree" "true"

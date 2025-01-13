@@ -58,7 +58,7 @@
     ../hardware-specific/keychron-q11.nix
     ../hardware-specific/trackball.nix
     ../hardware-specific/usb-automount.nix
-    ../hardware-specific/laptop.nix
+    ../hardware-specific/intel-laptop.nix
   ];
 
   system.autoUpgrade.allowReboot = pkgs.lib.mkForce false;
