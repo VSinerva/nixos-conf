@@ -28,6 +28,9 @@
 
     nginx = {
       recommendedGzipSettings = true;
+      recommendedOptimisation = true;
+      recommendedTlsSettings = true;
+      recommendedProxySettings = true;
 
       virtualHosts.${config.services.nextcloud.hostName} = {
         forceSSL = true;

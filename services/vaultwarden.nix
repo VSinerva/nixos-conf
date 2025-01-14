@@ -36,6 +36,9 @@
     nginx = {
       enable = true;
       recommendedGzipSettings = true;
+      recommendedOptimisation = true;
+      recommendedTlsSettings = true;
+      recommendedProxySettings = true;
 
       virtualHosts."vaultwarden.vsinerva.fi" = {
         forceSSL = true;
@@ -43,7 +46,7 @@
         enableACME = true;
         acmeRoot = null;
         locations."/" = {
-          proxyPass = "http://127.0.0.1:8000";
+          proxyPass = "http://localhost:8000";
         };
       };
     };
