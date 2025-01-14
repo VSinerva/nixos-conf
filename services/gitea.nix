@@ -26,7 +26,7 @@
           HTTP_PORT = 8000;
           ROOT_URL = "https://${config.services.gitea.settings.server.DOMAIN}";
         };
-        # service.DISABLE_REGISTRATION = true; # Disable for initial setup
+        service.DISABLE_REGISTRATION = true; # Disable for initial setup
         session.COOKIE_SECURE = true;
         mailer = {
           ENABLED = true;
