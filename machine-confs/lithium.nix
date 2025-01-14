@@ -2,6 +2,7 @@
 {
   networking = {
     hostName = "lithium";
+    tempAddresses = "disabled"; # For IP-based filtering to work better
 
     wg-quick.interfaces = {
       wg0 = {
