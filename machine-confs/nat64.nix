@@ -4,7 +4,7 @@
 
   imports = [
     ../base.nix
-    ../services/nat64.nix
+    #    ../services/nat64.nix
   ];
 
   # HARDWARE SPECIFIC
