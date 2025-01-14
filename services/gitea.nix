@@ -19,10 +19,8 @@
         repository = {
           ENABLE_PUSH_CREATE_USER = true;
         };
-        ui = {
-          DEFAULT_SHOW_FULL_NAME = true;
-          meta.AUTHOR = "Gitea, hosted by Vili Sinervä";
-        };
+        ui.DEFAULT_SHOW_FULL_NAME = true;
+        "ui.meta".AUTHOR = "Gitea, hosted by Vili Sinervä";
         server = {
           DOMAIN = "gitea.vsinerva.fi";
           HTTP_PORT = 8000;
