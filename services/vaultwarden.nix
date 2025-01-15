@@ -27,7 +27,7 @@
         SIGNUPS_VERIFY_RESEND_LIMIT = 5;
         SMTP_HOST = "smtp.gmail.com";
         SMTP_FROM_NAME = "Vaultwarden";
-        SMTP_SECURITY = "force_tls";
+        SMTP_SECURITY = "starttls";
         SMTP_PORT = 587;
         SMTP_AUTH_MECHANISM = "Login";
       };
