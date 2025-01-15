@@ -28,7 +28,7 @@
         SMTP_HOST = "smtp.gmail.com";
         SMTP_FROM_NAME = "Vaultwarden";
         SMTP_SECURITY = "force_tls";
-        SMTP_PRT = 587;
+        SMTP_PORT = 587;
         SMTP_AUTH_MECHANISM = "Login";
       };
     };
