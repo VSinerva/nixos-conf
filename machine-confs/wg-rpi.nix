@@ -87,10 +87,10 @@ in
 
   services.ddclient = {
     enable = true;
-    domains = [ "netflood.ddnsfree.com" ];
-    use = "web, web=checkip.dynu.com/, web-skip='IP Address'";
-    server = "api.dynu.com";
-    username = "VSinerva";
+    usev6 = "";
+    domains = [ "netflix.vsinerva.fi" ];
+    server = "www.ovh.com";
+    username = "vsinerva.fi-dynraspi";
     passwordFile = ddPassFile;
   };
   #################### EVERYTHING BELOW THIS SHOULD NOT NEED TO CHANGE ####################
