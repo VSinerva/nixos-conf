@@ -171,8 +171,8 @@
   users.mutableUsers = false; # Force all user management to happen throught nix-files
 
   boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
+    systemd-boot.enable = pkgs.lib.mkDefault true;
+    efi.canTouchEfiVariables = pkgs.lib.mkDefault true;
     timeout = pkgs.lib.mkDefault 0;
   };
 }

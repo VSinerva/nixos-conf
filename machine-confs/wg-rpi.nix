@@ -108,6 +108,8 @@ in
       "usb_storage"
     ];
     loader = {
+      timeout = 5;
+      systemd-boot.enable = false;
       grub.enable = false;
       generic-extlinux-compatible.enable = true;
     };
