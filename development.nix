@@ -249,6 +249,18 @@ in
             enable = true;
             installCargo = true;
             installRustc = true;
+            settings = {
+              completion = {
+                autoimport.enable = true;
+                autoself.enable = true;
+                fullFunctionSignatures.enable = true;
+                privateEditable.enable = true;
+              };
+              diagnostics = {
+                styleLints.enable = true;
+              };
+              hover.actions.references.enable = true;
+            };
           };
           yamlls.enable = true;
         };
