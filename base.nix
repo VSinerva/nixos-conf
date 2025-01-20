@@ -86,12 +86,11 @@
 
   services.fail2ban = {
     enable = true;
-    bantime = "1h";
+    maxretry = 10;
+    bantime = "10m";
     bantime-increment = {
       enable = true;
-      factor = "2";
-      formula = "ban.Time * (1 << (min(ban.Count, 6) * banFactor))";
-      maxtime = "90d";
+      maxtime = "1d";
     };
     jails = {
       DEFAULT.settings = {
