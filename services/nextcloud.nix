@@ -2,10 +2,7 @@
 {
   imports = [ ./cert-store-client.nix ];
 
-  networking.firewall.allowedTCPPorts = [
-    80
-    443
-  ];
+  networking.firewall.allowedTCPPorts = [ 443 ];
   networking.firewall.allowedUDPPorts = [ 443 ];
 
   services = {

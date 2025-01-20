@@ -1,11 +1,8 @@
 { config, ... }:
 {
-  imports = [ ./acme-dns.nix ];
+  imports = [ ./cert-store-client.nix ];
 
-  networking.firewall.allowedTCPPorts = [
-    80
-    443
-  ];
+  networking.firewall.allowedTCPPorts = [ 443 ];
   networking.firewall.allowedUDPPorts = [ 443 ];
 
   services = {
@@ -53,8 +50,8 @@
       virtualHosts.${config.services.gitea.settings.server.DOMAIN} = {
         forceSSL = true;
         kTLS = true;
-        enableACME = true;
-        acmeRoot = null;
+        sslCertificate = "/mnt/acme/fullchain.pem";
+        sslCertificateKey = "/mnt/acme/key.pem";
         locations."/" = {
           proxyPass = "http://localhost:8000";
         };
