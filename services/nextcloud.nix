@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  imports = [ ./acme-dns.nix ];
+  imports = [ ./cert-store-client.nix ];
 
   networking.firewall.allowedTCPPorts = [
     80
@@ -35,8 +35,8 @@
       virtualHosts.${config.services.nextcloud.hostName} = {
         forceSSL = true;
         kTLS = true;
-        enableACME = true;
-        acmeRoot = null;
+        sslCertificate = "/mnt/acme/fullchain.pem";
+        sslCertificateKey = "/mnt/acme/key.pem";
       };
     };
   };
