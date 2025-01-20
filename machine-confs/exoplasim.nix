@@ -33,8 +33,8 @@
     enable = true;
     usev4 = "";
     usev6 = "ifv6, ifv6=enp6s18";
-    username = "vsinerva.fi-dynexo";
-    domains = [ "exovpn.vsinerva.fi" ];
+    username = "sinerva.eu-dynexo";
+    domains = [ "exovpn.sinerva.eu" ];
     passwordFile = "/var/lib/ddclient/password";
     server = "www.ovh.com";
   };
