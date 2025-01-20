@@ -22,8 +22,7 @@
         mkdir -p ${config.users.users."cert-store".home}/acme
         cp fullchain.pem ${config.users.users."cert-store".home}/acme/
         cp key.pem ${config.users.users."cert-store".home}/acme/
-        chown -R cert-store:cert-store ${config.users.users."cert-store".home}/acme/
-        chmod ugoa=r ${config.users.users."cert-store".home}/acme/*.pem
+        chmod o+r ${config.users.users."cert-store".home}/acme/*.pem
       '';
     };
   };
