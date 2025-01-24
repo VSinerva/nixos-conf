@@ -11,7 +11,7 @@
           {
             # ExoPlaSim WireGuard
             "protocol" = "UDP";
-            "ipv4 address" = "192.168.1.2#51821";
+            "ipv4 address" = "192.168.1.3#51821";
             "ipv6 address" = "fd08:d473:bcca:1:210:3292:4922:b9aa#51821";
           }
         ];
@@ -20,24 +20,24 @@
           # Ports for static BIB entries
           {
             protocol = "UDP";
-            prefix = "192.168.1.2/32";
+            prefix = "192.168.1.3/32";
             "port range" = "51821";
           }
 
           # Port ranges for dynamic translation
           {
             protocol = "TCP";
-            prefix = "192.168.1.2/32";
+            prefix = "192.168.1.3/32";
             "port range" = "61001-65535";
           }
           {
             protocol = "UDP";
-            prefix = "192.168.1.2/32";
+            prefix = "192.168.1.3/32";
             "port range" = "61001-65535";
           }
           {
             protocol = "ICMP";
-            prefix = "192.168.1.2/32";
+            prefix = "192.168.1.3/32";
             "port range" = "61001-65535";
           }
         ];
