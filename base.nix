@@ -9,6 +9,7 @@
     tree
     btop
     pwgen
+    ssss
     dig
     termshark
   ];
