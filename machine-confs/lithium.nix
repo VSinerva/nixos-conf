@@ -49,11 +49,10 @@
   imports = [
     ../base.nix
     ../users/vili.nix
-    ../desktop.nix
+    ../desktop-sway.nix
     ../development.nix
     ../onlykey.nix
     ../services/syncthing.nix
-    ../services/redshift.nix
     ../services/moonlight.nix
     ../hardware-specific/keychron-q11.nix
     ../hardware-specific/trackball.nix

@@ -1,12 +1,5 @@
-{ config, ... }:
+{ ... }:
 {
-  assertions = [
-    {
-      assertion = config.services.xserver.enable;
-      message = "Trackball does not work without a desktop!";
-    }
-  ];
-
   nixpkgs.overlays = [
     (final: prev: {
       moonlight-qt = prev.moonlight-qt.overrideAttrs (old: {
