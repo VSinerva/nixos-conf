@@ -49,7 +49,7 @@
   imports = [
     ../base.nix
     ../users/vili.nix
-    ../desktop-sway.nix
+    ../desktop-wayland.nix
     ../development.nix
     ../onlykey.nix
     ../services/syncthing.nix

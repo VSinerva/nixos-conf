@@ -36,6 +36,7 @@
   ];
 
   services = {
+    gnome.gnome-keyring.enable = true;
     greetd = {
       enable = true;
       settings = {
