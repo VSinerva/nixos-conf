@@ -37,9 +37,10 @@
 
   services = {
     displayManager = {
-      defaultSession = "sway-uwsm";
-      autoLogin.enable = true;
-      autoLogin.user = "vili";
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+      };
     };
 
     printing.enable = true;
@@ -47,6 +48,15 @@
       enable = true;
       nssmdns4 = true;
       openFirewall = true;
+    };
+  };
+
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors.sway = {
+      prettyName = "Sway";
+      comment = "Sway compositor managed by UWSM";
+      binPath = "/run/current-system/sw/bin/sway";
     };
   };
 

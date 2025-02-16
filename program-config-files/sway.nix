@@ -104,19 +104,25 @@ let
     for_window [window_type="notification"] floating enable
 
     # Screen brightness controls
-    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+
+    # Volume
+    bindsym XF86AudioRaiseVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'
+    bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'
+    bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
 
     bindsym $mod+Return exec "alacritty --config-file ${alacritty-conf}"
     bindsym $mod+d exec --no-startup-id "rofi -theme 'Arc-Dark' -show combi -combi-modes 'run' -modes combi"
 
-    set $mode_system "(l)ock, (s)uspend, (h)ibernate, (r)eboot, (S)hutdown"
+    set $mode_system "(l)ock, (e)xit, (s)uspend, (h)ibernate, (r)eboot, (S)hutdown"
     bindsym $mod+Shift+p mode $mode_system
     mode $mode_system {
             bindsym l exec --no-startup-id swaylock, mode "default"
             bindsym s exec --no-startup-id "swaylock; systemctl suspend", mode "default"
             bindsym h exec --no-startup-id systemctl hibernate, mode "default"
             bindsym r exec --no-startup-id systemctl reboot, mode "default"
+            bindsym e exec --no-startup-id loginctl terminate-session self, mode "default"
             bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
             bindsym Return mode "default"
             bindsym Escape mode "default"
@@ -276,31 +282,22 @@ let
 in
 {
   environment.etc."sway/config".source = sway-conf;
-  programs = {
-    sway = {
-      enable = true;
-      wrapperFeatures.gtk = true;
-      extraPackages = with pkgs; [
-        alacritty
-        brightnessctl
-        pavucontrol
-        rofi-wayland
-        swaylock
-        swayrbar
-        wdisplays
-        wl-clipboard
-        wlsunset
-        i3status
-        networkmanagerapplet
-      ];
-    };
-    uwsm = {
-      enable = true;
-      waylandCompositors.sway = {
-        prettyName = "Sway";
-        comment = "Sway compositor managed by UWSM";
-        binPath = "/run/current-system/sw/bin/sway";
-      };
-    };
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+    extraPackages = with pkgs; [
+      alacritty
+      brightnessctl
+      pavucontrol
+      pulseaudio
+      rofi-wayland
+      swaylock
+      swayrbar
+      wdisplays
+      wl-clipboard
+      wlsunset
+      i3status
+      networkmanagerapplet
+    ];
   };
 }
