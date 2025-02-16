@@ -99,7 +99,6 @@ let
 
 
 
-    exec --no-startup-id nm-applet --sm-disable
     exec --no-startup-id wlsunset -S 08:00 -s 22:00 -t 2800 -g 0.9
     for_window [window_type="notification"] floating enable
 
@@ -137,9 +136,6 @@ let
     bar {
             swaybar_command swaybar
             status_command i3status -c ${i3status-conf}
-
-            bindsym button4 nop
-            bindsym button5 nop
 
             colors {
                     background #0f212f
@@ -297,7 +293,6 @@ in
       wl-clipboard
       wlsunset
       i3status
-      networkmanagerapplet
     ];
   };
 }
