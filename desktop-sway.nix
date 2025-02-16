@@ -36,27 +36,24 @@
   ];
 
   services = {
-    displayManager = {
-      sddm = {
-        enable = true;
-        wayland.enable = true;
+    greetd = {
+      enable = true;
+      settings = {
+        initial_session = {
+          command = "${pkgs.sway}/bin/sway";
+          user = "vili";
+        };
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+          user = "greeter";
+        };
       };
     };
-
     printing.enable = true;
     avahi = {
       enable = true;
       nssmdns4 = true;
       openFirewall = true;
-    };
-  };
-
-  programs.uwsm = {
-    enable = true;
-    waylandCompositors.sway = {
-      prettyName = "Sway";
-      comment = "Sway compositor managed by UWSM";
-      binPath = "/run/current-system/sw/bin/sway";
     };
   };
 

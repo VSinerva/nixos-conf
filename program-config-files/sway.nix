@@ -114,14 +114,13 @@ let
     bindsym $mod+Return exec "alacritty --config-file ${alacritty-conf}"
     bindsym $mod+d exec --no-startup-id "rofi -theme 'Arc-Dark' -show combi -combi-modes 'run' -modes combi"
 
-    set $mode_system "(l)ock, (e)xit, (s)uspend, (h)ibernate, (r)eboot, (S)hutdown"
+    set $mode_system "(l)ock, (s)uspend, (h)ibernate, (r)eboot, (S)hutdown"
     bindsym $mod+Shift+p mode $mode_system
     mode $mode_system {
             bindsym l exec --no-startup-id swaylock, mode "default"
             bindsym s exec --no-startup-id "swaylock; systemctl suspend", mode "default"
             bindsym h exec --no-startup-id systemctl hibernate, mode "default"
             bindsym r exec --no-startup-id systemctl reboot, mode "default"
-            bindsym e exec --no-startup-id loginctl terminate-session self, mode "default"
             bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
             bindsym Return mode "default"
             bindsym Escape mode "default"
