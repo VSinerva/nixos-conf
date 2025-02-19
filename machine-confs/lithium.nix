@@ -6,12 +6,9 @@
     wg-quick.interfaces = {
       wg0 = {
         autostart = true;
-        address = [
-          "fd08:d473:bcca:f0::3/64"
-          "2001:14ba:a08c:2df0::3/64"
-        ];
+        address = [ "2001:14ba:a090:39f0::3/64" ];
         dns = [
-          "fd08:d473:bcca::1"
+          "2001:14ba:a090:39f0::1"
           "vsinerva.fi"
         ];
         privateKeyFile = "/root/wireguard-keys/privatekey-home";
@@ -21,11 +18,7 @@
           {
             publicKey = "f9QoYPxyaxylUcOI9cE9fE9DJoEX4c6GUtr4p+rsd34=";
             presharedKeyFile = "/root/wireguard-keys/psk-home";
-            allowedIPs = [
-              "fd08:d473:bcca::/64"
-              "fd08:d473:bcca:f0::/64"
-              "::/0"
-            ];
+            allowedIPs = [ "::/0" ];
             endpoint = "wg.vsinerva.fi:51820";
           }
         ];
@@ -39,7 +32,7 @@
   };
   services.clatd = {
     enable = true;
-    settings.clat-v6-addr = "2001:14ba:a08c:2df0::f3";
+    settings.clat-v6-addr = "2001:14ba:a090:39f0::c3";
   };
   systemd.services.clatd.wants = [ "wg-quick-wg0.service" ];
 
