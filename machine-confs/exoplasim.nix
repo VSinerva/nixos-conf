@@ -29,16 +29,6 @@
     };
   };
 
-  services.ddclient = {
-    enable = true;
-    usev4 = "";
-    usev6 = "ifv6, ifv6=enp6s18";
-    username = "sinerva.eu-dynexo";
-    domains = [ "exovpn.sinerva.eu" ];
-    passwordFile = "/var/lib/ddclient/password";
-    server = "www.ovh.com";
-  };
-
   # User worker
   users.users.worker = {
     isNormalUser = true;
