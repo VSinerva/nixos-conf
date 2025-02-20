@@ -164,8 +164,13 @@
 
   networking = {
     # Easiest to use and most distros use this by default.
-    networkmanager.enable = true;
-    tempAddresses = "disabled";
+    networkmanager = {
+      enable = true;
+      # Use EUI-64 addresses by default, so that addresses are predictable
+      settings."connection"."ipv6.addr-gen-mode" = 0;
+    };
+    # IPv6 privacy addresses for outgoing traffic
+    tempAddresses = "default";
   };
 
   users.mutableUsers = false; # Force all user management to happen throught nix-files
