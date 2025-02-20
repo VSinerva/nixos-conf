@@ -9,7 +9,7 @@
   };
 
   fileSystems."/mnt/acme" = {
-    device = "cert-store@cert-store.vsinerva.fi:/home/cert-store/acme";
+    device = "cert-store@cert-store.vsinerva.fi:/home/cert-store/acme/-.vsinerva.fi";
     fsType = "sshfs";
     options = [
       "nodev"
