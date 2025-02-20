@@ -6,9 +6,9 @@
     wg-quick.interfaces = {
       wg0 = {
         autostart = true;
-        address = [ "2001:14ba:a090:39f0::3/64" ];
+        address = [ "2001:14ba:a090:39ff::3/64" ];
         dns = [
-          "2001:14ba:a090:39f0::1"
+          "2001:14ba:a090:39ff::1"
           "vsinerva.fi"
         ];
         privateKeyFile = "/root/wireguard-keys/privatekey-home";
@@ -32,7 +32,7 @@
   };
   services.clatd = {
     enable = true;
-    settings.clat-v6-addr = "2001:14ba:a090:39f0::c3";
+    settings.clat-v6-addr = "2001:14ba:a090:39ff::c3";
   };
   systemd.services.clatd.wants = [ "wg-quick-wg0.service" ];
 
