@@ -25,15 +25,15 @@
         (pkgs.lib.mkIf (config.networking.hostName == "syncthing") {
           "helium" = {
             id = "2MRUBSY-NHXYMAW-SY22RHP-CNNMHKR-DPDKMM4-2XV5F6M-6KSNLQI-DD4EOAM";
-            addresses = [ "tcp://[fd08:d473:bcca:f0::2]:22000" ];
+            addresses = [ "tcp://helium.vsinerva.fi:22000" ];
           };
           "lithium" = {
             id = "S4ZORDV-QBY7QC7-FQHADMZ-NQSKJUA-7B7LQNS-CWJLSMG-JPMN7YJ-OVRDZQA";
-            addresses = [ "tcp://[fd08:d473:bcca:f0::3]:22000" ];
+            addresses = [ "tcp://lithium.vsinerva.fi:22000" ];
           };
           "phone" = {
             id = "K6QCK2R-BU65RAC-PHTGLIA-24IHDXE-N6VNBAW-QYREMVD-XWGWKRA-VX2BNAK";
-            addresses = [ "tcp://[fd08:d473:bcca:f0::10]:22000" ];
+            addresses = [ "tcp://phone.vsinerva.fi:22000" ];
           };
         })
       ];
