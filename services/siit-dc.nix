@@ -4,6 +4,10 @@ let
   v4_pref = "192.168.250";
 in
 {
+  boot.kernel.sysctl = {
+    "net.ipv4.conf.all.forwarding" = 1;
+    "net.ipv6.conf.all.forwarding" = 1;
+  };
   networking = {
     jool = {
       enable = true;
