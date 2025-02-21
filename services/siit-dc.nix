@@ -13,7 +13,7 @@ in
         eamt = [
           {
             "ipv6 prefix" = "${gua_pref}d1:f0bf:efb:c23:b751/128";
-            "ipv4 prefix" = "192.168.250.2/32";
+            "ipv4 prefix" = "192.168.250.10/32";
           }
         ];
       };
