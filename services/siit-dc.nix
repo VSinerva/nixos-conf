@@ -1,13 +1,9 @@
 { ... }:
 let
   gua_pref = "2001:14ba:a090:39";
-  v4_pref = "192.168.250";
+  v4_pref = "192.168.251";
 in
 {
-  boot.kernel.sysctl = {
-    "net.ipv4.conf.all.forwarding" = 1;
-    "net.ipv6.conf.all.forwarding" = 1;
-  };
   networking = {
     jool = {
       enable = true;
