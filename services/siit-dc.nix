@@ -1,6 +1,7 @@
 { ... }:
 let
   gua_pref = "2001:14ba:a090:39";
+  v4_pref = "192.168.250";
 in
 {
   networking = {
@@ -13,7 +14,7 @@ in
         eamt = [
           {
             "ipv6 prefix" = "${gua_pref}d1:be24:11ff:fe42:dd76/128";
-            "ipv4 prefix" = "192.168.250.10/32";
+            "ipv4 prefix" = "${v4_pref}.1/32";
           }
         ];
       };
