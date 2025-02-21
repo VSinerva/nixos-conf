@@ -12,7 +12,7 @@ in
         # Explicit address mappings
         eamt = [
           {
-            "ipv6 prefix" = "${gua_pref}d1:f0bf:efb:c23:b751/128";
+            "ipv6 prefix" = "${gua_pref}d1:be24:11ff:fe42:dd76/128";
             "ipv4 prefix" = "192.168.250.10/32";
           }
         ];
