@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   networking = {
     hostName = "helium";
@@ -6,9 +6,9 @@
     wg-quick.interfaces = {
       wg0 = {
         autostart = true;
-        address = [ "2001:14ba:a090:39ff::2/64" ];
+        address = [ "${config.custom.gua_pref}ff::2/64" ];
         dns = [
-          "2001:14ba:a090:39ff::1"
+          "${config.custom.gua_pref}ff::1"
           "vsinerva.fi"
         ];
         privateKeyFile = "/root/wireguard-keys/privatekey-home";
@@ -50,7 +50,7 @@
   };
   services.clatd = {
     enable = true;
-    settings.clat-v6-addr = "2001:14ba:a090:39ff::c2";
+    settings.clat-v6-addr = "${config.custom.gua_pref}ff::c2";
   };
   systemd.services.clatd.wants = [ "wg-quick-wg0.service" ];
 
